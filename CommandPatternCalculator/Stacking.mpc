@@ -1,0 +1,73 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Author:         Ibrahim Sardar
+//  Class:          CSCI 363
+//  Filename:       Stacking.mpc
+//  Date:           10/17/2017
+//  Description:    MPC file for assignment #3.
+//                  This file handles all dependencies.
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Honor Pledge:
+//
+//  I pledge that I have neither given nor received any help on this assignment.
+//
+//  ibsardar
+//
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2017 Copyright Holder All Rights Reserved.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+project (StackingProject) {
+
+    exename = Stacking
+
+    Source_Files {
+        driver.cpp
+        Client.cpp
+        Stack_Expression_Command_Factory.cpp
+        Number_Command.cpp
+        Binary_Operation_Command.cpp
+        Add_Command.cpp
+        Subtract_Command.cpp
+        Multiply_Command.cpp
+        Divide_Command.cpp
+        Modulo_Command.cpp
+    }
+
+    Header_Files {
+        Base_Array.h
+        Array.h
+        Stack.h
+        Client.h
+        Expression_Command_Factory.h
+        Stack_Expression_Command_Factory.h
+        Command.h
+        Number_Command.h
+        Binary_Operation_Command.h
+        Add_Command.h
+        Subtract_Command.h
+        Multiply_Command.h
+        Divide_Command.h
+        Modulo_Command.h
+    }
+
+    Inline_Files {
+        Base_Array.inl
+        Array.inl
+        Stack.inl
+    }
+
+    Template_Files {
+        Base_Array.cpp
+        Array.cpp
+        Stack.cpp
+    }
+
+    specific (make) {
+        compile_flags += -std=c++11
+    }
+}
