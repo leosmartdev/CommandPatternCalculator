@@ -1,3 +1,5 @@
 /Debug
 .vs
 .git
+/Release
+/x64
