@@ -1,25 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-//
-//  Author:         Ibrahim Sardar
-//  Class:          CSCI 363
-//  Filename:       Stack_Expression_Command_Factory.h
-//  Date:           10/17/2017
-//  Description:    Headers for Stack_Expression_Command_Factory class.
-//                  A concrete factory class.
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//  Honor Pledge:
-//
-//  I pledge that I have neither given nor received any help on this assignment.
-//
-//  ibsardar
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2017 Copyright Holder All Rights Reserved.
-//
-////////////////////////////////////////////////////////////////////////////////
 
 #ifndef _STACK_EXPRESSION_COMMAND_FACTORY_H_
 #define _STACK_EXPRESSION_COMMAND_FACTORY_H_

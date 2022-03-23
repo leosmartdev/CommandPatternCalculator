@@ -1,25 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-//
-//  Author:         Ibrahim Sardar
-//  Class:          CSCI 363
-//  Filename:       Expression_Command_Factory.h
-//  Date:           10/23/2017
-//  Description:    Headers for Expression_Command_Factory class.
-//                  A pure virtual factory class (ie interface/abstract factory).
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//  Honor Pledge:
-//
-//  I pledge that I have neither given nor received any help on this assignment.
-//
-//  ibsardar
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2017 Copyright Holder All Rights Reserved.
-//
-////////////////////////////////////////////////////////////////////////////////
 
 #ifndef _EXPRESSION_COMMAND_FACTORY_H_
 #define _EXPRESSION_COMMAND_FACTORY_H_

@@ -18,6 +18,35 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Add_Command.cpp" />
+    <ClCompile Include="Binary_Operation_Command.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandPatternCalculator.cpp" />
+    <ClCompile Include="Divide_Command.cpp" />
+    <ClCompile Include="Modulo_Command.cpp" />
+    <ClCompile Include="Multiply_Command.cpp" />
+    <ClCompile Include="Number_Command.cpp" />
+    <ClCompile Include="Stack_Expression_Command_Factory.cpp" />
+    <ClCompile Include="Subtract_Command.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Add_Command.h" />
+    <ClInclude Include="Array.h" />
+    <ClInclude Include="Base_Array.h" />
+    <ClInclude Include="Binary_Operation_Command.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Divide_Command.h" />
+    <ClInclude Include="Expression_Command_Factory.h" />
+    <ClInclude Include="Modulo_Command.h" />
+    <ClInclude Include="Multiply_Command.h" />
+    <ClInclude Include="Number_Command.h" />
+    <ClInclude Include="Stack.h" />
+    <ClInclude Include="Stack_Expression_Command_Factory.h" />
+    <ClInclude Include="Subtract_Command.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{811A3367-D286-4078-AD9B-635091D24892}</ProjectGuid>
@@ -150,9 +179,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="CommandPatternCalculator.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
