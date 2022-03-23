@@ -5,14 +5,32 @@
 
 #include "Binary_Operation_Command.h"
 
-class Multiply_Command: public Binary_Operation_Command {
+/**
+*   @class Multiply_Command
+*
+*   A type of Binary_Operation_Command that multiplies two numbers.
+*/
+class Multiply_Command : public Binary_Operation_Command {
 
-    public:
-        Multiply_Command(void);
+public:
+	/// Default constructor.
+	Multiply_Command(void);
 
-        Multiply_Command(int);
+	/**
+	*   Initializing constructor
+	*
+	*   @param[in]          precedence          for implementating order-of-operations
+	*/
+	Multiply_Command(int);
 
-        int evaluate(int, int);
+	/**
+	*   Multiplies two integers
+	*
+	*   @param[in]          left                left-hand operand
+	*   @param[in]          right               right-hand operand
+	*   @return             result              calculated integer
+	*/
+	int evaluate(int, int);
 };
 
 #endif

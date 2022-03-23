@@ -2,20 +2,36 @@
 
 #include "Number_Command.h"
 
-Number_Command::Number_Command() : number_ (0) {
+//
+//  constructor
+//
+Number_Command::Number_Command() : number_(0) {
 
+	// nothing else to construct/initialize
 }
 
-Number_Command::Number_Command(int num) : number_ (num) {
+//
+//  number constructor
+//
+Number_Command::Number_Command(int num) : number_(num) {
 
+	// nothing else to construct/initialize
 }
 
+//
+//  execute
+//
 void Number_Command::execute(Stack<int> & stack) {
 
-    stack.push(this->evaluate());
+	// push self's int value onto stack
+	stack.push(this->evaluate());
 }
 
+//
+//  evaluate
+//
 int Number_Command::evaluate() {
 
-    return this->number_;
+	// just return the int value this command represents
+	return this->number_;
 }

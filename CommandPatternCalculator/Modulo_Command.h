@@ -5,14 +5,33 @@
 
 #include "Binary_Operation_Command.h"
 
-class Modulo_Command: public Binary_Operation_Command {
+/**
+*   @class Modulo_Command
+*
+*   A type of Binary_Operation_Command that mods two numbers.
+*/
+class Modulo_Command : public Binary_Operation_Command {
 
-    public:
-        Modulo_Command(void);
+public:
+	/// Default constructor.
+	Modulo_Command(void);
 
-        Modulo_Command(int);
+	/**
+	*   Initializing constructor
+	*
+	*   @param[in]          precedence          for implementating order-of-operations
+	*/
+	Modulo_Command(int);
 
-        int evaluate(int, int);
+	/**
+	*   Mods two integers
+	*
+	*   @param[in]          left                left-hand operand
+	*   @param[in]          right               right-hand operand
+	*   @return             result              calculated integer
+	*   @exception          overflow_error      denominator is zero
+	*/
+	int evaluate(int, int);
 };
 
 #endif

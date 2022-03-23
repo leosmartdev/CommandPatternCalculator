@@ -5,14 +5,32 @@
 
 #include "Binary_Operation_Command.h"
 
-class Add_Command: public Binary_Operation_Command {
+/**
+*   @class Add_Command
+*
+*   A type of Binary_Operation_Command that adds two numbers.
+*/
+class Add_Command : public Binary_Operation_Command {
 
-    public:
-        Add_Command(void);
+public:
+	/// Default constructor.
+	Add_Command(void);
 
-        Add_Command(int);
+	/**
+	*   Initializing constructor
+	*
+	*   @param[in]          precedence          for implementating order-of-operations
+	*/
+	Add_Command(int);
 
-        int evaluate(int, int);
+	/**
+	*   Adds two integers
+	*
+	*   @param[in]          left                left-hand operand
+	*   @param[in]          right               right-hand operand
+	*   @return             result              calculated integer
+	*/
+	int evaluate(int, int);
 };
 
 #endif
