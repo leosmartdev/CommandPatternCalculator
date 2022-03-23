@@ -27,63 +27,53 @@ void Client::run() {
     // user input expression
     string exp;
 
-    // user input expression list
-    std::queue< Array<string> > exp_queue;
-
     // factory for infix_to_postfix
     Stack_Expression_Command_Factory factory;
 
     // menu - obtain user input expressions
-    cout << "\nWelcome to the Multiple Expression Calculator! (now using design patterns)" << endl;
+    cout << "\nWelcome to the Multiple Expression Calculator! (using design patterns)" << endl;
     cout << "Instructions:" << endl;
-    cout << "\t- Type \"QUIT\" on a seperate line to end your input." << endl;
+    cout << "\t- Type \"quit\" on a seperate line to end your input." << endl;
     cout << "\t- Separate each operator/operand with a space." << endl;
-    cout << "\nEnter your expressions:" << endl;
     while(true) {
+		cout << "\nPlease enter a mathematical expression: ";
 
         // user input string
         std::getline(cin, exp);
-        if (exp == "QUIT")
+        if (exp == "QUIT" || exp == "quit")
             break;
 
         // parse expression into an Array
         Array<string> infix = this->parse(exp);
 
         // enqueue valid expression, exception if invalid
-        if (this->is_valid(infix))
-            exp_queue.push(infix);
+		if (this->is_valid(infix)) {
+			// get postfix
+			Array<Command*> postfix = this->infix_to_postfix(infix, factory);
+
+			// check for math errors
+			try {
+
+				// get result
+				int result = this->evaluate(postfix);
+
+				// print result
+				cout << "The result is: " << result << endl;
+
+			}
+			catch (std::overflow_error e) {
+
+				// print exception error and notify
+				cout << e.what() << endl;
+				cout << "(a result was ignored...)" << endl;
+			}
+		}
         else
-            cout << "Invalid expression format: last input was ignored." << endl;
-    }
-
-    // for each expression...
-    while(!exp_queue.empty()) {
-
-        // get postfix
-        Array<Command*> postfix = this->infix_to_postfix(exp_queue.front(), factory);
-
-        // check for math errors
-        try {
-
-            // get result
-            int result = this->evaluate(postfix);
-
-            // print result
-            cout << "Result: " << result << endl;
-
-        } catch (std::overflow_error e) {
-
-            // print exception error and notify
-            cout << e.what() << endl;
-            cout << "(a result was ignored...)" << endl;
-        }
-
-        // remove expression from queue
-        exp_queue.pop();
+            cout << "Invalid expression format: It was ignored." << endl;
     }
 
     // wait then quit
-    cout << "Press any key to quit." << endl;
+    cout << "\nThank you for using Calculator!" << endl;
     cin.ignore();
 }
 
@@ -281,7 +271,6 @@ bool Client::is_valid(Array<string> & infix) {
     if (opened != 0)
         return false;
 
-    // if the checks survived up to here, expression format must be valid
     return true;
 }
 
@@ -290,8 +279,6 @@ bool Client::is_valid(Array<string> & infix) {
 //
 int Client::get_precedence(std::string op) {
 
-    // return appropriate precedence
-    // (smaller value == higher precedence)
     if (op == "%" || op == "/" || op == "*")
         return 2;
     else if (op == "-" || op == "+")
@@ -314,93 +301,51 @@ Array<Command*> Client::infix_to_postfix(Array<string> & infix,
 
     // go through infix item-by-item
     for (int i=0; i<infix.size(); i++) {
-
-        //
-        // CASE 1 - open parenthesis
-        //
         if (infix[i] == "(")
-
-            // place next item on the stack
             postfix_stack.push(infix[i]);
-
-        //
-        // CASE 2 - close parenthesis
-        //
         else if (infix[i] == ")") {
 
-            // pop stack until we reach the start of this parenthesis
             while (postfix_stack.top() != "(") {
-
-                // transfer top item into queue
                 postfix_queue.push(postfix_stack.top());
                 postfix_stack.pop();
             }
 
-            // don't forget to pop that open parenthesis!
             postfix_stack.pop();
         }
-
-        //
-        // CASE 3 - operators
-        //
-        else if (infix[i] == "+" || infix[i] == "-" || infix[i] == "*" ||
-                infix[i] == "/" || infix[i] == "%") {
+        else if (infix[i] == "+" || infix[i] == "-" || infix[i] == "*" || infix[i] == "/" || infix[i] == "%") {
 
             // if stack is empty
             if (postfix_stack.is_empty()) {
+			
+				postfix_stack.push(infix[i]);
 
-                // push onto stack
-                postfix_stack.push(infix[i]);
-
-            // if stack contains operators or parenthesis
             } else {
 
-                // note: higher precedence means more important
-                // pop until precedence of stack top is less than current item
-                // or if stack becomes empty
                 while (!postfix_stack.is_empty() &&
                         this->get_precedence(postfix_stack.top()) >= this->get_precedence(infix[i])) {
 
-                    // pop the top into the queue
                     postfix_queue.push(postfix_stack.top());
                     postfix_stack.pop();
                 }
 
-                // push current item onto stack
                 postfix_stack.push(infix[i]);
             }
         }
-
-        //
-        // CASE 4 - numbers
-        //
         else
-
-            // output number into queue
             postfix_queue.push(infix[i]);
     }
 
-    // empty the rest of the stack into the queue
     while (!postfix_stack.is_empty()){
-
-        // pop the top into the queue
         postfix_queue.push(postfix_stack.top());
         postfix_stack.pop();
     }
 
-    // resultant postfix command array
     Array<Command*> postfix_array(postfix_queue.size());
 
-    // transfer everything from the queue into the command array
     for (int i=0; i<postfix_array.size(); i++) {
 
-        // get next operator/operand string
         string item = postfix_queue.front();
-
-        // binary operation command
         Command * cmd;
-
-        // create appropriate command
         if (item == "+") {
             cmd = factory.create_add_command();
         } else if (item == "-") {
@@ -415,14 +360,11 @@ Array<Command*> Client::infix_to_postfix(Array<string> & infix,
             cmd = factory.create_number_command(std::stoi(item));
         }
 
-        // insert command into postfix array
         postfix_array[i] = cmd;
 
-        // pop top of postfix queue
         postfix_queue.pop();
     }
 
-    // return postfix expression
     return postfix_array;
 }
 
@@ -431,64 +373,24 @@ Array<Command*> Client::infix_to_postfix(Array<string> & infix,
 //
 int Client::evaluate(Array<Command*> & postfix) {
 
-    // base case: empty expression
     if (!postfix.size())
         return 0;
 
-    // int stack to be evaluated
     Stack<int> stack;
 
-    // execute on every int in the postfix array;
     for (int i=0; i<postfix.size(); i++) {
-
-        // catch math exceptions
         try {
-
-            // command execute function will take care of how the stack is altered
             postfix[i]->execute(stack);
-
-        // if math exception
         } catch (std::overflow_error & e) {
-
-            // free memory of remaining commands
             for (int j=i; j<postfix.size(); j++)
                 delete postfix[j];
-
-            // stop executing commands by throwing the same exception
             throw e;
         }
 
-        // free memory of command (won't need it anymore)
         delete postfix[i];
     }
 
-    // stack must have number left:
-    //   Cast base class 'Command' to derived class 'Number_Command'
-    //   and evaluate it to get its raw int value (the final result).
     int result = stack.top();
 
-    // return final int result of postfix expression
     return result;
-
-    /*******OLD*****************************************************************
-    // command stack to be evaluated
-    Stack<Command*> stack;
-
-    // execute every command in the postfix array;
-    // command execute function will take care of how the stack is altered
-    for (int i=0; i<postfix.size(); i++)
-        postfix[i]->execute(stack);
-
-    // stack must have 1 Number_Command left:
-    //   Cast base class 'Command' to derived class 'Number_Command'
-    //   and evaluate it to get its raw int value (the final result).
-    Number_Command * cmd = static_cast<Number_Command *>(stack.top());
-    int result = cmd->evaluate();
-
-    // free memory of the last command from the stack
-    delete cmd;
-
-    // return final int result of postfix expression
-    return result;
-    ***************************************************************************/
 }
