@@ -11,6 +11,8 @@
  * @class Stack
  *
  * Basic stack for abitrary elements.
+ *
+ * Template Pattern
  */
 template <typename T>
 class Stack {

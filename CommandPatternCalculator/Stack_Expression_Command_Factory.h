@@ -16,6 +16,8 @@
 *
 *   A type of Expression_Command_Factory that creates commands for basic
 *   calculator integer operations.
+*
+*	Abstract Factory Pattern
 */
 class Stack_Expression_Command_Factory : public Expression_Command_Factory {
 

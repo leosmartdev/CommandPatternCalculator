@@ -10,6 +10,8 @@
 *   @class Number_Command
 *
 *   A type of Command that holds an integer value.
+*
+*	Comment Pattern
 */
 class Number_Command : public Command {
 

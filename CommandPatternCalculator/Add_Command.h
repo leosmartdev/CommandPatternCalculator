@@ -9,6 +9,8 @@
 *   @class Add_Command
 *
 *   A type of Binary_Operation_Command that adds two numbers.
+*
+*	Command Pattern
 */
 class Add_Command : public Binary_Operation_Command {
 

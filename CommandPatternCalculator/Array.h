@@ -11,6 +11,8 @@
  * @class Array
  *
  * Basic implementation of a standard array class.
+ * 
+ * Template Pattern
  */
 template <typename T>
 class Array : public Base_Array <T> {

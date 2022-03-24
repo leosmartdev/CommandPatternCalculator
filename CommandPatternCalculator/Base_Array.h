@@ -9,6 +9,8 @@
  * @class Base_Array
  *
  * Basic implementation of a standard base array class.
+ *
+ * Template Pattern
  */
 template <typename T>
 class Base_Array {

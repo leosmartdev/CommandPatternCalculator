@@ -9,6 +9,8 @@
 *   @class Command
 *
 *   An interface for simple commands that can execute over an evaluation stack.
+* 
+*	Command Pattern
 */
 class Command {
 

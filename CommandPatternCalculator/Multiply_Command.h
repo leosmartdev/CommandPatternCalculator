@@ -9,6 +9,8 @@
 *   @class Multiply_Command
 *
 *   A type of Binary_Operation_Command that multiplies two numbers.
+*
+*	Comment Pattern
 */
 class Multiply_Command : public Binary_Operation_Command {
 

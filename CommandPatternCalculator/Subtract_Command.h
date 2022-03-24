@@ -9,6 +9,8 @@
 *   @class Subtract_Command
 *
 *   A type of Binary_Operation_Command that subtracts two numbers.
+*
+*	Comment Pattern
 */
 class Subtract_Command : public Binary_Operation_Command {
 

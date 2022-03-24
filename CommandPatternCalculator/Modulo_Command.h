@@ -9,6 +9,8 @@
 *   @class Modulo_Command
 *
 *   A type of Binary_Operation_Command that mods two numbers.
+*
+*	Command Pattern
 */
 class Modulo_Command : public Binary_Operation_Command {
 

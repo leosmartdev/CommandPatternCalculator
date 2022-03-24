@@ -15,6 +15,8 @@
 *
 *   An interface for factories that construct commands including basic
 *   integer operation commands.
+* 
+*	Abstract Factory Pattern
 */
 class Expression_Command_Factory {
 

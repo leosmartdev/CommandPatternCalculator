@@ -12,6 +12,8 @@
 *
 *   A type of Command that involves two integers to be evaluated with some
 *   operator.
+*	
+*	Command Pattern
 */
 class Binary_Operation_Command : public Command {
 

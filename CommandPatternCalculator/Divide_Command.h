@@ -9,6 +9,8 @@
 *   @class Divide_Command
 *
 *   A type of Binary_Operation_Command that divides two numbers.
+*
+*	Command Pattern
 */
 class Divide_Command : public Binary_Operation_Command {
 
