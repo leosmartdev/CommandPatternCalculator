@@ -3,12 +3,12 @@
 #ifndef _BASE_ARRAY_H_
 #define _BASE_ARRAY_H_
 
-#include <cstring> // for size_t definition
+#include <cstring> // for uInt definition
+
+typedef unsigned int uInt;
 
 /**
  * @class Base_Array
- *
- * Basic implementation of a standard base array class.
  *
  * Template Pattern
  */
@@ -16,142 +16,340 @@ template <typename T>
 class Base_Array {
 
 public:
-	/// Type definition of the element type.
-	typedef T type;
 
-	/// Default constructor.
+	// Default constructor.
 	Base_Array(void);
 
 	/**
 	* Initializing constructor.
 	*
-	* @param[in]      length        Initial size
+	* @param: length        Initial size
 	*/
-	Base_Array(size_t length);
+	Base_Array(uInt length);
 
 	/**
 	* Initializing constructor.
 	*
-	* @param[in]      length        Initial size
-	* @param[in]      fill          Initial value for each element
+	* @param: length        Initial size
+	* @param: fill          Initial value for each element
 	*/
-	Base_Array(size_t length, T fill);
+	Base_Array(uInt length, T fill);
 
 	/**
 	* Copy constructor
 	*
-	* @param[in]     arr         The source array.
+	* @param: arr         The source array.
 	*/
 	Base_Array(const Base_Array <T> & arr);
 
-	/// Destructor.
+	// Destructor.
 	~Base_Array(void);
 
 	/**
 	* Retrieve the current size of the array.
 	*
-	* @return          The current size
+	* @return: The current size
 	*/
-	size_t size(void) const;
+	uInt size(void) const;
 
 	/**
-	* Get the value at the specified index. If the index is not
-	* within the range of the array, then std::out_of_range exception
-	* is thrown.
+	* Get the value at the specified index.
 	*
-	* @param[in]       index               Zero-based location
-	* @exception       std::out_of_range   Invalid \a index value
+	* @param: index               Zero-based location
 	*/
-	T & operator [] (size_t index);
+	T & operator [] (uInt index);
 
 	/**
 	* @overload
-	*
-	* The returned value is not modifiable.
 	*/
-	const T & operator [] (size_t index) const;
+	const T & operator [] (uInt index) const;
 
 	/**
-	* Get the value at the specified index. If the \a index is not within
-	* the range of the array, then std::out_of_range exception is thrown.
+	* Get the value at the specified index.
 	*
-	* @param[in]       index                 Zero-based location
-	* @return          T at \index
-	* @exception       std::out_of_range     Invalid index value
+	* @param: index                 Zero-based location
+	* @return: T at \index
 	*/
-	T get(size_t index) const;
+	T get(uInt index) const;
 
 	/**
-	* Set the value at the specified \a index. If the \a index is not
-	* within range of the array, then std::out_of_range exception is
-	* thrown.
+	* Set the value at the specified \a index. 
 	*
-	* @param[in]       index                 Zero-based location
-	* @param[in]       value                 New value for T
-	* @exception       std::out_of_range     Invalid \a index value
+	* @param: index                 Zero-based location
+	* @param: value                 New value for T
 	*/
-	void set(size_t index, T value);
+	void set(uInt index, T value);
 
 	/**
-	* Locate the specified value in the array. The index of the first
-	* occurrence of the value is returned. If the value is not
-	* found in the array, then -1 is returned.
+	* Locate the specified value in the array.
 	*
-	* @param[in]        ch        Value to search for
-	* @return           Index value of the value
-	* @retval           -1        Value not found
+	* @param: ch        Value to search for
+	* @return: Index value of the value
+	* @return: -1        Value not found
 	*/
 	int find(T element) const;
 
 	/**
 	* @overload
 	*
-	* This version allows you to specify the start index of the search. If
-	* the start index is not within the range of the array, then the
-	* std::out_of_range exception is thrown.
+	* This version allows you to specify the start index of the search.
 	*
-	* @param[in]       T                    Value to search for
-	* @param[in]       start                Index to begin search
-	* @return          Index value of first occurrence
-	* @retval          -1                   Value not found
-	* @exception       std::out_of_range    Invalid index
+	* @param: T                    Value to search for
+	* @param: start                Index to begin search
+	* @return: Index value of first occurrence
+	* @return: -1                   Value not found
 	*/
-	int find(T element, size_t start) const;
+	int find(T element, uInt start) const;
 
 	/**
 	* Test the array for equality.
 	*
-	* @param[in]       rhs                  Right hand side of equal to sign
-	* @retval          true                 Left side is equal to right side
-	* @retval          false                Left side is not equal to right side
+	* @param: rhs                  Right hand side of equal to sign
+	* @return: true                 Left side is equal to right side
+	* @return: false                Left side is not equal to right side
 	*/
 	bool operator == (const Base_Array <T> & rhs) const;
 
 	/**
 	* Test the array for inequality.
 	*
-	* @param[in]       rhs                  Right-hand size of not equal to sign
-	* @retval          true                 Left side is not equal to right side
-	* @retval          false                Left size is equal to right side
+	* @param: rhs                  Right-hand size of not equal to sign
+	* @return: true                 Left side is not equal to right side
+	* @return: false                Left size is equal to right side
 	*/
 	bool operator != (const Base_Array <T> & rhs) const;
 
 	/**
 	* Fill the contents of the array.
 	*
-	* @param[in]       T                    Fill value
+	* @param: T                    Fill value
 	*/
 	void fill(T element);
 
 protected:
-	/// Pointer to the actual data.
-	T * data_;
+	// Pointer to the actual data.
+	T * _data;
 
-	/// Current size of the array.
-	size_t cur_size_;
+	// Current size of the array.
+	uInt _cur_size;
 };
 
-#include "Base_Array.inl"
-#include "Base_Array.cpp"
+// size
+template <typename T>
+inline
+uInt Base_Array <T>::size(void) const {
+	return this->_cur_size;
+}
+
+#include <stdexcept>         // for std::out_of_bounds exception
+
+// default length
+#define DEFAULT_SIZE 10
+
+// Base_Array - default constructor
+template <typename T>
+Base_Array <T>::Base_Array(void) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+{
+	//...
+}
+
+// Base_Array - length constructor
+template <typename T>
+Base_Array <T>::Base_Array(uInt length) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+{
+	// if length is valid, adjust size
+	if (length > 0) {
+
+		// reallocate memory
+		delete[] this->_data;
+		this->_data = new T[length];
+
+		// set size
+		this->_cur_size = length;
+	}
+}
+
+// Base_Array - fill constructor
+template <typename T>
+Base_Array <T>::Base_Array(uInt length, T fill) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+{
+	// if length is valid, adjust size
+	if (length > 0) {
+
+		// reallocate memory
+		delete[] this->_data;
+		this->_data = new T[length];
+
+		// set size
+		this->_cur_size = length;
+	}
+
+	// fill array
+	this->fill(fill);
+}
+
+// Base_Array - copy constructor
+template <typename T>
+Base_Array <T>::Base_Array(const Base_Array & array) : _data(new T[array.size()]), _cur_size(array.size()) 
+{
+	// copy elements and fill array
+	for (uInt i = 0; i < this->_cur_size; i++) {
+		this->_data[i] = array[i];
+	}
+}
+
+// ~Array
+template <typename T>
+Base_Array <T>::~Base_Array(void) 
+{
+	// release data from memory
+	delete[] this->_data;
+}
+
+// operator []
+template <typename T>
+T & Base_Array <T>::operator [] (uInt index) 
+{
+	// exception if out of bounds
+	if (index < 0 || index >= this->_cur_size) {
+		throw(std::out_of_range("Error: Invalid index"));
+	}
+
+	// return element
+	return this->_data[index];
+}
+
+// operator []
+template <typename T>
+const T & Base_Array <T>::operator [] (uInt index) const 
+{
+	// exception if out of bounds
+	if (index < 0 || index >= this->_cur_size) {
+		throw(std::out_of_range("Error: Invalid index"));
+	}
+
+	// return element
+	return this->_data[index];
+}
+
+// get
+template <typename T>
+T Base_Array <T>::get(uInt index) const 
+{
+	// exception if out of bounds
+	if (index < 0 || index >= this->_cur_size) {
+		throw(std::out_of_range("Error: Invalid index"));
+	}
+
+	// return element
+	return this->_data[index];
+}
+
+// set
+template <typename T>
+void Base_Array <T>::set(uInt index, T value) 
+{
+	// exception if out of bounds
+	if (index < 0 || index >= this->_cur_size) {
+		throw(std::out_of_range("Error: Invalid index"));
+	}
+
+	// set element
+	this->_data[index] = value;
+}
+
+// find (value)
+template  <typename T>
+int Base_Array <T>::find(T value) const 
+{
+	// refer to find(value,uInt)
+	return this->find(value, 0);
+}
+
+// find (value, uInt)
+template <typename T>
+int Base_Array <T>::find(T value, uInt start) const 
+{
+	// exception if out of bounds
+	if (start < 0 || start >= this->_cur_size) {
+		throw(std::out_of_range("Error: Invalid index"));
+	}
+
+	// linear search
+	for (uInt i = start; i < this->_cur_size; i++) {
+
+		// found
+		if (this->_data[i] == value) {
+			return i;
+		}
+	}
+
+	// not found
+	return -1;
+}
+
+// operator ==
+template <typename T>
+bool Base_Array <T>::operator == (const Base_Array & rhs) const 
+{
+	// check for self assignment
+	if (this == &rhs) {
+		return true;
+	}
+
+	// different lengths means not equal
+	if (rhs.size() != this->size()) {
+		return false;
+	}
+
+	// linear search
+	for (uInt i = 0; i < this->_cur_size; i++) {
+
+		// elements do not match at this index
+		if (this->_data[i] != rhs[i]) {
+			return false;
+		}
+	}
+
+	// arrays have identical content
+	return true;
+}
+
+// operator !=
+template <typename T>
+bool Base_Array <T>::operator != (const Base_Array & rhs) const 
+{
+	// check for self assignment
+	if (this == &rhs) {
+		return false;
+	}
+
+	// different lengths means not equal
+	if (rhs.size() != this->size()) {
+		return true;
+	}
+
+	// linear search
+	for (uInt i = 0; i < this->_cur_size; i++) {
+
+		// elements do not match at this index
+		if (this->_data[i] != rhs[i]) {
+			return true;
+		}
+	}
+
+	// arrays have identical content
+	return false;
+}
+
+// fill
+template <typename T>
+void Base_Array <T>::fill(T value) 
+{
+	// fill array
+	for (uInt i = 0; i < this->_cur_size; i++) {
+		this->_data[i] = value;
+	}
+}
 
 #endif   // !defined _BASE_ARRAY_H_

@@ -16,21 +16,20 @@
 class Number_Command : public Command {
 
 public:
-	/// Default constructor.
+	// Default constructor.
 	Number_Command(void);
 
 	/**
 	*   Initializing constructor
 	*
-	*   @param[in]          number              store some integer value
+	*   @param: number              store some integer value
 	*/
 	Number_Command(int);
 
 	/**
-	*   Executes on an input stack by treating it like a calculator
-	*   evaluation stack. Stored integer of self is pushed onto the stack
+	*   Executes on an input stack by treating it like a calculator evaluation stack.
 	*
-	*   @param[in]          evaluation stack    stack used for evaluating a postfix expression
+	*   @param: evaluation stack    stack used for evaluating a postfix expression
 	*/
 	void execute(Stack<int> &);
 

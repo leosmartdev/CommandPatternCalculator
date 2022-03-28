@@ -15,23 +15,22 @@
 class Command {
 
 public:
-	/// Default constructor
+	// Default constructor
 	Command(void) {}
 
-	/// Destructor (virtual)
+	// Destructor (virtual)
 	virtual ~Command(void) {};
 
-	/// Copy constructor (deleted)
+	// Copy constructor (deleted)
 	Command(const Command &) = delete;
 
-	/// Equals operator (deleted)
+	// Equals operator (deleted)
 	const Command & operator = (const Command &) = delete;
 
 	/**
-	*   Executes on an input stack by treating it like a calculator
-	*   evaluation stack.
+	*   Executes on an input stack by treating it like a calculator evaluation stack.
 	*
-	*   @param[in]          evaluation stack    stack used for evaluating a postfix expression
+	*   @param: evaluation stack    stack used for evaluating a postfix expression
 	*/
 	virtual void execute(Stack<int> &) = 0;
 };

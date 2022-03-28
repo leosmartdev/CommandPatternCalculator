@@ -15,23 +15,23 @@
 class Divide_Command : public Binary_Operation_Command {
 
 public:
-	/// Default constructor.
+	// Default constructor.
 	Divide_Command(void);
 
 	/**
 	*   Initializing constructor
 	*
-	*   @param[in]          precedence          for implementating order-of-operations
+	*   @param: precedence          for implementating order-of-operations
 	*/
 	Divide_Command(int);
 
 	/**
 	*   Divides two integers
 	*
-	*   @param[in]          left                left-hand operand
-	*   @param[in]          right               right-hand operand
-	*   @return             result              calculated integer
-	*   @exception          overflow_error      denominator is zero
+	*   @param: left                left-hand operand
+	*   @param: right               right-hand operand
+	*   @return: result              calculated integer
+	*   @exception: overflow_error      denominator is zero
 	*/
 	int evaluate(int, int);
 };

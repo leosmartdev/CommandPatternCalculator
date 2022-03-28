@@ -3,14 +3,12 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
-#include <cstring> // for size_t definition
-
 #include "Base_Array.h"
+
+typedef unsigned int uInt;
 
 /**
  * @class Array
- *
- * Basic implementation of a standard array class.
  * 
  * Template Pattern
  */
@@ -18,81 +16,215 @@ template <typename T>
 class Array : public Base_Array <T> {
 
 public:
-	/// Type definition of the element type.
-	typedef T type;
 
-	/// Default constructor.
+	// Default constructor.
 	Array(void);
 
 	/**
 	* Initializing constructor.
 	*
-	* @param[in]      length        Initial size
+	* @param: length        Initial size
 	*/
-	Array(size_t length);
+	Array(uInt length);
 
 	/**
 	* Initializing constructor.
 	*
-	* @param[in]      length        Initial size
-	* @param[in]      fill          Initial value for each element
+	* @param: length        Initial size
+	* @param: fill          Initial value for each element
 	*/
-	Array(size_t length, T fill);
+	Array(uInt length, T fill);
 
 	/**
 	* Copy constructor
 	*
-	* @param[in]     arr         The source array.
+	* @param: arr         The source array.
 	*/
 	Array(const Array & arr);
 
-	/// Destructor.
+	// Destructor.
 	~Array(void);
 
 	/**
 	* Assignment operation
 	*
-	* @param[in]       rhs      Right-hand side of equal sign
-	* @return          Reference to self
+	* @param: rhs      Right-hand side of equal sign
+	* @return: Reference to self
 	*/
 	const Array & operator = (const Array & rhs);
 
 	/**
 	* Retrieve the maximum size of the array.
 	*
-	* @return          The maximum size
+	* @return: The maximum size
 	*/
-	size_t max_size(void) const;
+	uInt max_size(void) const;
 
 	/**
-	* Set a new size for the array. If \a new_size is less than the current
-	* size, then the array is truncated. If \a new_size if greater then the
-	* current size, then the array is made larger and the new elements are
-	* not initialized to anything. If \a new_size is the same as the current
-	* size, then nothing happens.
+	* Set a new size for the array.
 	*
-	* The array's original contents are preserved regardless of whether the
-	* array's size is either increased or decreased.
-	*
-	* @param[in]       new_size              New size of the array
+	* @param: new_size              New size of the array
 	*/
-	void resize(size_t new_size);
+	void resize(uInt new_size);
 
 private:
-	/// Maximum size of the array.
-	size_t max_size_;
+	// Maximum size of the array.
+	uInt _max_size;
 
 	/**
 	 * Doubles the current max size until the current size is smaller.
 	 *
-	 * @param[in]     maximum size
-	 * @param[in]     current size
-	 * @retval        new maximum size
+	 * @param: maximum size
+	 * @param: current size
+	 * @return: new maximum size
 	 */
-	int bound_max(size_t max, size_t cur);
+	uInt bound_max(uInt max, uInt cur);
 };
 
-#include "Array.inl"
-#include "Array.cpp"
+// max_size
+template <typename T>
+inline
+uInt Array <T>::max_size(void) const 
+{
+	return this->_max_size;
+}
+
+#include <stdexcept>         // for std::out_of_bounds exception
+
+// default max length
+#define DEFAULT_MAX_SIZE 10
+
+// Array - default constructor
+template <typename T>
+Array <T>::Array(void) : Base_Array <T>(), _max_size(DEFAULT_MAX_SIZE) 
+{
+	delete[] this->_data;
+	this->_data = new T[DEFAULT_MAX_SIZE];
+	this->_cur_size = 0;
+}
+
+// Array - length constructor
+template <typename T> 
+Array <T>::Array(uInt length) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+{
+	// resize
+	if (length >= 0)
+		this->resize(length);
+}
+
+// Array (uInt, value)
+template <typename T>
+Array <T>::Array(uInt length, T fill) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+{
+	// resize
+	if (length >= 0)
+		this->resize(length);
+
+	// fill array
+	this->fill(fill);
+}
+
+// Array (const Array &)
+template <typename T>
+Array <T>::Array(const Array & array) : Base_Array <T>(), _max_size(array.max_size()) 
+{
+	delete[] this->_data;
+	this->_data = new T[array.max_size()];
+	this->_cur_size = array.size();
+
+	// copy elements and fill array
+	for (uInt i = 0; i < this->_cur_size; i++) {
+		this->_data[i] = array[i];
+	}
+}
+
+// ~Array
+template <typename T>
+Array <T>::~Array(void) 
+{
+	// Base_Array destructor will take care of this
+}
+
+// operator =
+template <typename T>
+const Array <T> & Array <T>::operator = (const Array & rhs) 
+{
+	// check for self assignment
+	if (this == &rhs) {
+		// return value this is pointing at
+		return *this;
+	}
+
+	// release current values from memory
+	delete[] this->_data;
+
+	// re-init
+	this->_data = new T[rhs.max_size()];
+	this->_cur_size = rhs.size();
+	this->_max_size = rhs.max_size();
+
+	// copy elements and fill array
+	for (uInt i = 0; i < this->_cur_size; i++) {
+		this->_data[i] = rhs[i];
+	}
+
+	// return value this is pointing at
+	return *this;
+}
+
+// resize
+template <typename T>
+void Array <T>::resize(uInt new_size) 
+{
+	// if invalid new size
+	if (new_size < 0) {
+		// New size must be greater than 0. Resize ignored.
+		return;
+	}
+
+	// if new size is larger than max
+	if (new_size > this->_max_size) {
+		// double the current max size until
+		// the new size fits
+		int new_max = this->bound_max(this->_max_size, new_size);
+
+		// init array with new max size
+		T * tmp = new T[new_max];
+
+		// copy old array into bigger
+		uInt i = 0;
+		for (i = 0; i < this->_cur_size; i++) {
+			tmp[i] = this->_data[i];
+		}
+
+		// delete old array
+		delete[] this->_data;
+
+		// set bigger array
+		this->_data = tmp;
+		this->_cur_size = new_size;
+		this->_max_size = new_max;
+		return;
+	}
+
+	// if new size is larger/smaller than the current
+	if (new_size != this->_cur_size) {
+		this->_cur_size = new_size;
+	}
+}
+
+// bound_max (private)
+template <typename T>
+uInt Array <T>::bound_max(uInt max, uInt cur) {
+
+	// double the current max size until the new size fits
+	uInt new_max = max;
+	while (cur > new_max) {
+		new_max *= 2;
+	}
+
+	// return new max
+	return new_max;
+}
 
 #endif   // !defined _ARRAY_H_

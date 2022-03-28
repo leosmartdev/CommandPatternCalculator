@@ -3,9 +3,7 @@
 #include <stdexcept>
 #include "Binary_Operation_Command.h"
 
-//
 //  default constructor
-//
 Binary_Operation_Command::Binary_Operation_Command() : precedence_(0) {
 
 	// nothing else to construct/initialize

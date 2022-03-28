@@ -15,21 +15,21 @@
 class Subtract_Command : public Binary_Operation_Command {
 
 public:
-	/// Default constructor.
+	// Default constructor.
 	Subtract_Command(void);
 
 	/**
 	*   Initializing constructor
 	*
-	*   @param[in]          precedence          for implementating order-of-operations
+	*   @param         precedence          for implementating order-of-operations
 	*/
 	Subtract_Command(int);
 
 	/**
 	*   Subtracts two integers
 	*
-	*   @param[in]          left                left-hand operand
-	*   @param[in]          right               right-hand operand
+	*   @param         left                left-hand operand
+	*   @param         right               right-hand operand
 	*   @return             result              calculated integer
 	*/
 	int evaluate(int, int);

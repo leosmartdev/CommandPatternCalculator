@@ -14,8 +14,7 @@
 /**
 *   @class Stack_Expression_Command_Factory
 *
-*   A type of Expression_Command_Factory that creates commands for basic
-*   calculator integer operations.
+*   Creates commands for basic calculator integer operations.
 *
 *	Abstract Factory Pattern
 */
@@ -25,7 +24,7 @@ public:
 	/**
 	*   Creates and returns a command representing some integer value
 	*
-	*   @param[in]          value               integer value
+	*   @param         value               integer value
 	*   @return             number command      command representing a number
 	*/
 	Number_Command * create_number_command(int num);
