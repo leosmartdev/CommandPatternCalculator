@@ -3,27 +3,27 @@
 #ifndef _SUBTRACT_COMMAND_H_
 #define _SUBTRACT_COMMAND_H_
 
-#include "Binary_Operation_Command.h"
+#include "BinaryOperationCommand.h"
 
 /**
-*   @class Subtract_Command
+*   @class SubtractCommand
 *
-*   A type of Binary_Operation_Command that subtracts two numbers.
+*   A type of BinaryOperationCommand that subtracts two numbers.
 *
 *	Comment Pattern
 */
-class Subtract_Command : public Binary_Operation_Command {
+class SubtractCommand : public BinaryOperationCommand {
 
 public:
 	// Default constructor.
-	Subtract_Command(void);
+	SubtractCommand(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param         precedence          for implementating order-of-operations
 	*/
-	Subtract_Command(int);
+	SubtractCommand(int);
 
 	/**
 	*   Subtracts two integers

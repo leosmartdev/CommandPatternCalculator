@@ -97,11 +97,7 @@ private:
   int _top;
 };
 
-// include the inline files
-// #include "Stack.inl"
-//
 // size
-//
 template <typename T>
 inline
 uInt Stack <T>::size(void) const {
@@ -111,9 +107,7 @@ uInt Stack <T>::size(void) const {
 	return this->_top + 1;
 }
 
-//
 // top
-//
 template <typename T>
 inline
 T Stack <T>::top(void) const {
@@ -126,13 +120,11 @@ T Stack <T>::top(void) const {
 	return this->_data->get(this->_top);
 }
 
-//
 // is_empty
-//
 template <typename T>
 inline
-bool Stack <T>::is_empty(void) const {
-
+bool Stack <T>::is_empty(void) const 
+{
 	// stack empty when top is -1
 	return this->_top < 0;
 }
@@ -140,14 +132,15 @@ bool Stack <T>::is_empty(void) const {
 
 // Stack
 template <typename T>
-Stack <T>::Stack(void) : _data(new Array<T>()), _top(-1) {
+Stack <T>::Stack(void) : _data(new Array<T>()), _top(-1) 
+{
 	//...
 }
 
 // Stack
 template <typename T>
-Stack <T>::Stack(const Stack & stack) : _data(new Array<T>(stack._data->size())), _top(-1) {
-
+Stack <T>::Stack(const Stack & stack) : _data(new Array<T>(stack._data->size())), _top(-1) 
+{
 	// if self assignment, ignore
 	if (this == &stack)
 		return;
@@ -159,16 +152,16 @@ Stack <T>::Stack(const Stack & stack) : _data(new Array<T>(stack._data->size()))
 
 // ~Stack
 template <typename T>
-Stack <T>::~Stack(void) {
-
+Stack <T>::~Stack(void) 
+{
 	// call Array destructor
 	delete this->_data;
 }
 
 // operator =
 template <typename T>
-const Stack <T> & Stack <T>::operator = (const Stack & rhs) {
-
+const Stack <T> & Stack <T>::operator = (const Stack & rhs) 
+{
 	// check for self assignment
 	if (this == &rhs) {
 		return *this;
@@ -183,12 +176,11 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs) {
 
 // push
 template <typename T>
-void Stack <T>::push(T element) {
-
+void Stack <T>::push(T element) 
+{
 	// Make space in the array:
 	// if top has reached end of array
 	if (this->size() >= this->_data->size()) {
-
 		// resize
 		this->_data->resize(this->size() + 1);
 	}
@@ -200,8 +192,8 @@ void Stack <T>::push(T element) {
 
 // pop
 template <typename T>
-void Stack <T>::pop(void) {
-
+void Stack <T>::pop(void) 
+{
 	// exception if empty
 	if (this->is_empty())
 		throw Stack <T>::empty_exception();
@@ -212,11 +204,10 @@ void Stack <T>::pop(void) {
 
 // clear
 template <typename T>
-void Stack <T>::clear(void) {
-
+void Stack <T>::clear(void) 
+{
 	// reset top
 	this->_top = -1;
 }
-
 
 #endif   // !defined _STACK_H_

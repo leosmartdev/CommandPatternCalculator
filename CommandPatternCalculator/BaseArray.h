@@ -8,24 +8,24 @@
 typedef unsigned int uInt;
 
 /**
- * @class Base_Array
+ * @class BaseArray
  *
  * Template Pattern
  */
 template <typename T>
-class Base_Array {
+class BaseArray {
 
 public:
 
 	// Default constructor.
-	Base_Array(void);
+	BaseArray(void);
 
 	/**
 	* Initializing constructor.
 	*
 	* @param: length        Initial size
 	*/
-	Base_Array(uInt length);
+	BaseArray(uInt length);
 
 	/**
 	* Initializing constructor.
@@ -33,17 +33,17 @@ public:
 	* @param: length        Initial size
 	* @param: fill          Initial value for each element
 	*/
-	Base_Array(uInt length, T fill);
+	BaseArray(uInt length, T fill);
 
 	/**
 	* Copy constructor
 	*
 	* @param: arr         The source array.
 	*/
-	Base_Array(const Base_Array <T> & arr);
+	BaseArray(const BaseArray <T> & arr);
 
 	// Destructor.
-	~Base_Array(void);
+	~BaseArray(void);
 
 	/**
 	* Retrieve the current size of the array.
@@ -108,7 +108,7 @@ public:
 	* @return: true                 Left side is equal to right side
 	* @return: false                Left side is not equal to right side
 	*/
-	bool operator == (const Base_Array <T> & rhs) const;
+	bool operator == (const BaseArray <T> & rhs) const;
 
 	/**
 	* Test the array for inequality.
@@ -117,7 +117,7 @@ public:
 	* @return: true                 Left side is not equal to right side
 	* @return: false                Left size is equal to right side
 	*/
-	bool operator != (const Base_Array <T> & rhs) const;
+	bool operator != (const BaseArray <T> & rhs) const;
 
 	/**
 	* Fill the contents of the array.
@@ -137,7 +137,7 @@ protected:
 // size
 template <typename T>
 inline
-uInt Base_Array <T>::size(void) const {
+uInt BaseArray <T>::size(void) const {
 	return this->_cur_size;
 }
 
@@ -146,16 +146,16 @@ uInt Base_Array <T>::size(void) const {
 // default length
 #define DEFAULT_SIZE 10
 
-// Base_Array - default constructor
+// BaseArray - default constructor
 template <typename T>
-Base_Array <T>::Base_Array(void) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+BaseArray <T>::BaseArray(void) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
 {
 	//...
 }
 
-// Base_Array - length constructor
+// BaseArray - length constructor
 template <typename T>
-Base_Array <T>::Base_Array(uInt length) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+BaseArray <T>::BaseArray(uInt length) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
 {
 	// if length is valid, adjust size
 	if (length > 0) {
@@ -169,9 +169,9 @@ Base_Array <T>::Base_Array(uInt length) : _data(new T[DEFAULT_SIZE]), _cur_size(
 	}
 }
 
-// Base_Array - fill constructor
+// BaseArray - fill constructor
 template <typename T>
-Base_Array <T>::Base_Array(uInt length, T fill) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
+BaseArray <T>::BaseArray(uInt length, T fill) : _data(new T[DEFAULT_SIZE]), _cur_size(DEFAULT_SIZE) 
 {
 	// if length is valid, adjust size
 	if (length > 0) {
@@ -188,9 +188,9 @@ Base_Array <T>::Base_Array(uInt length, T fill) : _data(new T[DEFAULT_SIZE]), _c
 	this->fill(fill);
 }
 
-// Base_Array - copy constructor
+// BaseArray - copy constructor
 template <typename T>
-Base_Array <T>::Base_Array(const Base_Array & array) : _data(new T[array.size()]), _cur_size(array.size()) 
+BaseArray <T>::BaseArray(const BaseArray & array) : _data(new T[array.size()]), _cur_size(array.size()) 
 {
 	// copy elements and fill array
 	for (uInt i = 0; i < this->_cur_size; i++) {
@@ -200,7 +200,7 @@ Base_Array <T>::Base_Array(const Base_Array & array) : _data(new T[array.size()]
 
 // ~Array
 template <typename T>
-Base_Array <T>::~Base_Array(void) 
+BaseArray <T>::~BaseArray(void) 
 {
 	// release data from memory
 	delete[] this->_data;
@@ -208,7 +208,7 @@ Base_Array <T>::~Base_Array(void)
 
 // operator []
 template <typename T>
-T & Base_Array <T>::operator [] (uInt index) 
+T & BaseArray <T>::operator [] (uInt index) 
 {
 	// exception if out of bounds
 	if (index < 0 || index >= this->_cur_size) {
@@ -221,7 +221,7 @@ T & Base_Array <T>::operator [] (uInt index)
 
 // operator []
 template <typename T>
-const T & Base_Array <T>::operator [] (uInt index) const 
+const T & BaseArray <T>::operator [] (uInt index) const 
 {
 	// exception if out of bounds
 	if (index < 0 || index >= this->_cur_size) {
@@ -234,7 +234,7 @@ const T & Base_Array <T>::operator [] (uInt index) const
 
 // get
 template <typename T>
-T Base_Array <T>::get(uInt index) const 
+T BaseArray <T>::get(uInt index) const 
 {
 	// exception if out of bounds
 	if (index < 0 || index >= this->_cur_size) {
@@ -247,7 +247,7 @@ T Base_Array <T>::get(uInt index) const
 
 // set
 template <typename T>
-void Base_Array <T>::set(uInt index, T value) 
+void BaseArray <T>::set(uInt index, T value) 
 {
 	// exception if out of bounds
 	if (index < 0 || index >= this->_cur_size) {
@@ -260,7 +260,7 @@ void Base_Array <T>::set(uInt index, T value)
 
 // find (value)
 template  <typename T>
-int Base_Array <T>::find(T value) const 
+int BaseArray <T>::find(T value) const 
 {
 	// refer to find(value,uInt)
 	return this->find(value, 0);
@@ -268,7 +268,7 @@ int Base_Array <T>::find(T value) const
 
 // find (value, uInt)
 template <typename T>
-int Base_Array <T>::find(T value, uInt start) const 
+int BaseArray <T>::find(T value, uInt start) const 
 {
 	// exception if out of bounds
 	if (start < 0 || start >= this->_cur_size) {
@@ -290,7 +290,7 @@ int Base_Array <T>::find(T value, uInt start) const
 
 // operator ==
 template <typename T>
-bool Base_Array <T>::operator == (const Base_Array & rhs) const 
+bool BaseArray <T>::operator == (const BaseArray & rhs) const 
 {
 	// check for self assignment
 	if (this == &rhs) {
@@ -317,7 +317,7 @@ bool Base_Array <T>::operator == (const Base_Array & rhs) const
 
 // operator !=
 template <typename T>
-bool Base_Array <T>::operator != (const Base_Array & rhs) const 
+bool BaseArray <T>::operator != (const BaseArray & rhs) const 
 {
 	// check for self assignment
 	if (this == &rhs) {
@@ -344,7 +344,7 @@ bool Base_Array <T>::operator != (const Base_Array & rhs) const
 
 // fill
 template <typename T>
-void Base_Array <T>::fill(T value) 
+void BaseArray <T>::fill(T value) 
 {
 	// fill array
 	for (uInt i = 0; i < this->_cur_size; i++) {

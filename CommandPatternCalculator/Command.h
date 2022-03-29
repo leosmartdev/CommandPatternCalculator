@@ -7,7 +7,6 @@
 
 /**
 *   @class Command
-*
 *   An interface for simple commands that can execute over an evaluation stack.
 * 
 *	Command Pattern
@@ -29,7 +28,6 @@ public:
 
 	/**
 	*   Executes on an input stack by treating it like a calculator evaluation stack.
-	*
 	*   @param: evaluation stack    stack used for evaluating a postfix expression
 	*/
 	virtual void execute(Stack<int> &) = 0;

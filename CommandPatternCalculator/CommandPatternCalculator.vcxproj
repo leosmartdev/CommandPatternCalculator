@@ -19,33 +19,33 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Add_Command.cpp" />
-    <ClCompile Include="Binary_Operation_Command.cpp" />
+    <ClCompile Include="AddCommand.cpp" />
+    <ClCompile Include="BinaryOperationCommand.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandPatternCalculator.cpp" />
-    <ClCompile Include="Divide_Command.cpp" />
-    <ClCompile Include="Modulo_Command.cpp" />
-    <ClCompile Include="Multiply_Command.cpp" />
-    <ClCompile Include="Number_Command.cpp" />
-    <ClCompile Include="Stack_Expression_Command_Factory.cpp" />
-    <ClCompile Include="Subtract_Command.cpp" />
+    <ClCompile Include="DivideCommand.cpp" />
+    <ClCompile Include="ModuloCommand.cpp" />
+    <ClCompile Include="MultiplyCommand.cpp" />
+    <ClCompile Include="NumberCommand.cpp" />
+    <ClCompile Include="StackExpressionCommandFactory.cpp" />
+    <ClCompile Include="SubtractCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add_Command.h" />
+    <ClInclude Include="AddCommand.h" />
     <ClInclude Include="Array.h" />
-    <ClInclude Include="Base_Array.h" />
-    <ClInclude Include="Binary_Operation_Command.h" />
+    <ClInclude Include="BaseArray.h" />
+    <ClInclude Include="BinaryOperationCommand.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="Divide_Command.h" />
-    <ClInclude Include="Expression_Command_Factory.h" />
-    <ClInclude Include="Modulo_Command.h" />
-    <ClInclude Include="Multiply_Command.h" />
-    <ClInclude Include="Number_Command.h" />
+    <ClInclude Include="DivideCommand.h" />
+    <ClInclude Include="ExpressionCommandFactory.h" />
+    <ClInclude Include="ModuloCommand.h" />
+    <ClInclude Include="MultiplyCommand.h" />
+    <ClInclude Include="NumberCommand.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="Stack_Expression_Command_Factory.h" />
-    <ClInclude Include="Subtract_Command.h" />
+    <ClInclude Include="StackExpressionCommandFactory.h" />
+    <ClInclude Include="SubtractCommand.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

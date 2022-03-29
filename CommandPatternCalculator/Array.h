@@ -3,7 +3,7 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
-#include "Base_Array.h"
+#include "BaseArray.h"
 
 typedef unsigned int uInt;
 
@@ -13,7 +13,7 @@ typedef unsigned int uInt;
  * Template Pattern
  */
 template <typename T>
-class Array : public Base_Array <T> {
+class Array : public BaseArray <T> {
 
 public:
 
@@ -96,7 +96,7 @@ uInt Array <T>::max_size(void) const
 
 // Array - default constructor
 template <typename T>
-Array <T>::Array(void) : Base_Array <T>(), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(void) : BaseArray <T>(), _max_size(DEFAULT_MAX_SIZE) 
 {
 	delete[] this->_data;
 	this->_data = new T[DEFAULT_MAX_SIZE];
@@ -105,7 +105,7 @@ Array <T>::Array(void) : Base_Array <T>(), _max_size(DEFAULT_MAX_SIZE)
 
 // Array - length constructor
 template <typename T> 
-Array <T>::Array(uInt length) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(uInt length) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
 {
 	// resize
 	if (length >= 0)
@@ -114,7 +114,7 @@ Array <T>::Array(uInt length) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFA
 
 // Array (uInt, value)
 template <typename T>
-Array <T>::Array(uInt length, T fill) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(uInt length, T fill) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
 {
 	// resize
 	if (length >= 0)
@@ -126,7 +126,7 @@ Array <T>::Array(uInt length, T fill) : Base_Array <T>(DEFAULT_MAX_SIZE), _max_s
 
 // Array (const Array &)
 template <typename T>
-Array <T>::Array(const Array & array) : Base_Array <T>(), _max_size(array.max_size()) 
+Array <T>::Array(const Array & array) : BaseArray <T>(), _max_size(array.max_size()) 
 {
 	delete[] this->_data;
 	this->_data = new T[array.max_size()];
@@ -142,7 +142,7 @@ Array <T>::Array(const Array & array) : Base_Array <T>(), _max_size(array.max_si
 template <typename T>
 Array <T>::~Array(void) 
 {
-	// Base_Array destructor will take care of this
+	// BaseArray destructor will take care of this
 }
 
 // operator =
@@ -223,7 +223,6 @@ uInt Array <T>::bound_max(uInt max, uInt cur) {
 		new_max *= 2;
 	}
 
-	// return new max
 	return new_max;
 }
 

@@ -7,24 +7,24 @@
 #include "Stack.h"
 
 /**
-*   @class Number_Command
+*   @class NumberCommand
 *
 *   A type of Command that holds an integer value.
 *
 *	Comment Pattern
 */
-class Number_Command : public Command {
+class NumberCommand : public Command {
 
 public:
 	// Default constructor.
-	Number_Command(void);
+	NumberCommand(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param: number              store some integer value
 	*/
-	Number_Command(int);
+	NumberCommand(int);
 
 	/**
 	*   Executes on an input stack by treating it like a calculator evaluation stack.
@@ -41,8 +41,8 @@ public:
 	int evaluate(void);
 
 private:
-	/// stored number of a typical expression
-	int number_;
+	// stored number of a typical expression
+	int _number;
 };
 
 #endif

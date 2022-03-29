@@ -1,36 +1,37 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef _MULTIPLY_COMMAND_H_
-#define _MULTIPLY_COMMAND_H_
+#ifndef _MODULO_COMMAND_H_
+#define _MODULO_COMMAND_H_
 
-#include "Binary_Operation_Command.h"
+#include "BinaryOperationCommand.h"
 
 /**
-*   @class Multiply_Command
+*   @class ModuloCommand
 *
-*   A type of Binary_Operation_Command that multiplies two numbers.
+*   A type of BinaryOperationCommand that mods two numbers.
 *
-*	Comment Pattern
+*	Command Pattern
 */
-class Multiply_Command : public Binary_Operation_Command {
+class ModuloCommand : public BinaryOperationCommand {
 
 public:
 	// Default constructor.
-	Multiply_Command(void);
+	ModuloCommand(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param: precedence          for implementating order-of-operations
 	*/
-	Multiply_Command(int);
+	ModuloCommand(int);
 
 	/**
-	*   Multiplies two integers
+	*   Mods two integers
 	*
 	*   @param: left                left-hand operand
 	*   @param: right               right-hand operand
 	*   @return: result              calculated integer
+	*   @exception: overflow_error      denominator is zero
 	*/
 	int evaluate(int, int);
 };

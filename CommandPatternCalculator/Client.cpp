@@ -19,16 +19,14 @@ using std::cin;
 using std::endl;
 using std::string;
 
-//
 //  run
-//
 void Client::run() {
 
     // user input expression
     string exp;
 
     // factory for infix_to_postfix
-    Stack_Expression_Command_Factory factory;
+    StackExpressionCommandFactory factory;
 
     // menu - obtain user input expressions
     cout << "\nWelcome to the Multiple Expression Calculator! (using design patterns)" << endl;
@@ -291,7 +289,7 @@ int Client::get_precedence(std::string op) {
 //  infix_to_postfix
 //
 Array<Command*> Client::infix_to_postfix(Array<string> & infix,
-        Stack_Expression_Command_Factory & factory) {
+        StackExpressionCommandFactory & factory) {
 
     // easier to push into than Array
     std::queue<string> postfix_queue;

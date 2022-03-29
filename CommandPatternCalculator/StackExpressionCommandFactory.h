@@ -3,22 +3,22 @@
 #ifndef _STACK_EXPRESSION_COMMAND_FACTORY_H_
 #define _STACK_EXPRESSION_COMMAND_FACTORY_H_
 
-#include "Expression_Command_Factory.h"
-#include "Number_Command.h"
-#include "Add_Command.h"
-#include "Subtract_Command.h"
-#include "Multiply_Command.h"
-#include "Divide_Command.h"
-#include "Modulo_Command.h"
+#include "ExpressionCommandFactory.h"
+#include "NumberCommand.h"
+#include "AddCommand.h"
+#include "SubtractCommand.h"
+#include "MultiplyCommand.h"
+#include "DivideCommand.h"
+#include "ModuloCommand.h"
 
 /**
-*   @class Stack_Expression_Command_Factory
+*   @class StackExpressionCommandFactory
 *
 *   Creates commands for basic calculator integer operations.
 *
 *	Abstract Factory Pattern
 */
-class Stack_Expression_Command_Factory : public Expression_Command_Factory {
+class StackExpressionCommandFactory : public ExpressionCommandFactory {
 
 public:
 	/**
@@ -27,42 +27,42 @@ public:
 	*   @param         value               integer value
 	*   @return             number command      command representing a number
 	*/
-	Number_Command * create_number_command(int num);
+	NumberCommand * create_number_command(int num);
 
 	/**
 	*   Creates and returns a command representing an addition operator
 	*
 	*   @return             add command         command representing an addition operator
 	*/
-	Add_Command * create_add_command(void);
+	AddCommand * create_add_command(void);
 
 	/**
 	*   Creates and returns a command representing a subtraction operator
 	*
 	*   @return             subtract command    command representing a subtraction operator
 	*/
-	Subtract_Command * create_subtract_command(void);
+	SubtractCommand * create_subtract_command(void);
 
 	/**
 	*   Creates and returns a command representing a multiplcation operator
 	*
 	*   @return             multiply command    command representing a multiplcation operator
 	*/
-	virtual Multiply_Command * create_multiply_command(void);
+	virtual MultiplyCommand * create_multiply_command(void);
 
 	/**
 	*   Creates and returns a command representing a division operator
 	*
 	*   @return             divide command      command representing a division operator
 	*/
-	Divide_Command * create_divide_command(void);
+	DivideCommand * create_divide_command(void);
 
 	/**
 	*   Creates and returns a command representing a modulo operator
 	*
 	*   @return             modulo command      command representing a modulo operator
 	*/
-	Modulo_Command * create_modulo_command(void);
+	ModuloCommand * create_modulo_command(void);
 };
 
 #endif
