@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="AddCommand.cpp" />
     <ClCompile Include="BinaryOperationCommand.cpp" />
-    <ClCompile Include="Client.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandPatternCalculator.cpp" />
     <ClCompile Include="DivideCommand.cpp" />
@@ -36,7 +35,6 @@
     <ClInclude Include="Array.h" />
     <ClInclude Include="BaseArray.h" />
     <ClInclude Include="BinaryOperationCommand.h" />
-    <ClInclude Include="Client.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="DivideCommand.h" />
     <ClInclude Include="ExpressionCommandFactory.h" />
