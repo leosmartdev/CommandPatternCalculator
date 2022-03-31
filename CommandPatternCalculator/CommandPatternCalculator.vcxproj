@@ -19,31 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddCommand.cpp" />
-    <ClCompile Include="BinaryOperationCommand.cpp" />
+    <ClCompile Include="add_Command_P.cpp" />
+    <ClCompile Include="Binary_Op_Command.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CommandPatternCalculator.cpp" />
-    <ClCompile Include="DivideCommand.cpp" />
-    <ClCompile Include="ModuloCommand.cpp" />
-    <ClCompile Include="MultiplyCommand.cpp" />
-    <ClCompile Include="NumberCommand.cpp" />
-    <ClCompile Include="StackExpressionCommandFactory.cpp" />
-    <ClCompile Include="SubtractCommand.cpp" />
+    <ClCompile Include="div_Command_P.cpp" />
+    <ClCompile Include="Infix_Postfix_Cal_UI.cpp" />
+    <ClCompile Include="mod_Command_P.cpp" />
+    <ClCompile Include="mul_Command_P.cpp" />
+    <ClCompile Include="Num_Command.cpp" />
+    <ClCompile Include="Stack_Exp_Command_Factory.cpp" />
+    <ClCompile Include="sub_Command_P.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddCommand.h" />
+    <ClInclude Include="add_Command_P.h" />
     <ClInclude Include="Array.h" />
     <ClInclude Include="BaseArray.h" />
-    <ClInclude Include="BinaryOperationCommand.h" />
+    <ClInclude Include="Binary_Op_Command.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="DivideCommand.h" />
-    <ClInclude Include="ExpressionCommandFactory.h" />
-    <ClInclude Include="ModuloCommand.h" />
-    <ClInclude Include="MultiplyCommand.h" />
-    <ClInclude Include="NumberCommand.h" />
+    <ClInclude Include="div_Command_P.h" />
+    <ClInclude Include="Exp_Command_Factory.h" />
+    <ClInclude Include="mod_Command_P.h" />
+    <ClInclude Include="mul_Command_P.h" />
+    <ClInclude Include="Num_Command.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="StackExpressionCommandFactory.h" />
-    <ClInclude Include="SubtractCommand.h" />
+    <ClInclude Include="Stack_Exp_Command_Factory.h" />
+    <ClInclude Include="sub_Command_P.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

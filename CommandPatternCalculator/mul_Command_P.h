@@ -3,27 +3,27 @@
 #ifndef _MULTIPLY_COMMAND_H_
 #define _MULTIPLY_COMMAND_H_
 
-#include "BinaryOperationCommand.h"
+#include "Binary_Op_Command.h"
 
 /**
-*   @class MultiplyCommand
+*   @class mul_Command_P
 *
-*   A type of BinaryOperationCommand that multiplies two numbers.
+*   A type of Binary_Op_Command that multiplies two numbers.
 *
 *	Comment Pattern
 */
-class MultiplyCommand : public BinaryOperationCommand {
+class mul_Command_P : public Binary_Op_Command {
 
 public:
 	// Default constructor.
-	MultiplyCommand(void);
+	mul_Command_P(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param: precedence          for implementating order-of-operations
 	*/
-	MultiplyCommand(int);
+	mul_Command_P(int);
 
 	/**
 	*   Multiplies two integers

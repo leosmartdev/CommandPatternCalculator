@@ -3,27 +3,27 @@
 #ifndef _MODULO_COMMAND_H_
 #define _MODULO_COMMAND_H_
 
-#include "BinaryOperationCommand.h"
+#include "Binary_Op_Command.h"
 
 /**
-*   @class ModuloCommand
+*   @class mod_Command_P
 *
-*   A type of BinaryOperationCommand that mods two numbers.
+*   A type of Binary_Op_Command that mods two numbers.
 *
 *	Command Pattern
 */
-class ModuloCommand : public BinaryOperationCommand {
+class mod_Command_P : public Binary_Op_Command {
 
 public:
 	// Default constructor.
-	ModuloCommand(void);
+	mod_Command_P(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param: precedence          for implementating order-of-operations
 	*/
-	ModuloCommand(int);
+	mod_Command_P(int);
 
 	/**
 	*   Mods two integers

@@ -15,34 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CommandPatternCalculator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BinaryOperationCommand.cpp">
+    <ClCompile Include="Binary_Op_Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NumberCommand.cpp">
+    <ClCompile Include="Num_Command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddCommand.cpp">
+    <ClCompile Include="add_Command_P.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DivideCommand.cpp">
+    <ClCompile Include="div_Command_P.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuloCommand.cpp">
+    <ClCompile Include="mod_Command_P.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MultiplyCommand.cpp">
+    <ClCompile Include="mul_Command_P.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SubtractCommand.cpp">
+    <ClCompile Include="sub_Command_P.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StackExpressionCommandFactory.cpp">
+    <ClCompile Include="Stack_Exp_Command_Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Infix_Postfix_Cal_UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,34 +56,34 @@
     <ClInclude Include="BaseArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryOperationCommand.h">
+    <ClInclude Include="Binary_Op_Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NumberCommand.h">
+    <ClInclude Include="Num_Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AddCommand.h">
+    <ClInclude Include="add_Command_P.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DivideCommand.h">
+    <ClInclude Include="div_Command_P.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModuloCommand.h">
+    <ClInclude Include="mod_Command_P.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MultiplyCommand.h">
+    <ClInclude Include="mul_Command_P.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SubtractCommand.h">
+    <ClInclude Include="sub_Command_P.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StackExpressionCommandFactory.h">
+    <ClInclude Include="Stack_Exp_Command_Factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExpressionCommandFactory.h">
+    <ClInclude Include="Exp_Command_Factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

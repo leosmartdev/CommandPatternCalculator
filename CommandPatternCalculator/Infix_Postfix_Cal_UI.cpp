@@ -13,7 +13,7 @@
 #include "Array.h"
 #include "Stack.h"
 #include "Command.h"
-#include "StackExpressionCommandFactory.h"
+#include "Stack_Exp_Command_Factory.h"
 
 using std::cout;
 using std::cin;
@@ -234,10 +234,10 @@ int get_precedence(std::string op) {
 /**
 *   Creates and returns a new postfix string array from the input infix string array.
 *   @param: Array<std::string>      infix expression
-*   @param: StackExpressionCommandFactory      factory that creates commands
+*   @param: Stack_Exp_Command_Factory      factory that creates commands
 *   @return: Array<Command*>         postfix expression represented by commands
 */
-Array<Command*> infix_to_postfix(Array<string> & infix, StackExpressionCommandFactory & factory) {
+Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factory & factory) {
 
 	// easier to push into than Array
 	std::queue<string> postfix_queue;
@@ -358,7 +358,7 @@ int main(int argc, char * argv[]) {
 	string exp;
 
 	// factory for infix_to_postfix
-	StackExpressionCommandFactory factory;
+	Stack_Exp_Command_Factory factory;
 
 	// menu - obtain user input expressions
 	cout << "\nWelcome to the Design Pattern Calculator!" << endl;

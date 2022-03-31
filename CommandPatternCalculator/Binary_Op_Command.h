@@ -5,27 +5,27 @@
 
 #include "Stack.h"
 #include "Command.h"
-#include "NumberCommand.h"
+#include "Num_Command.h"
 
 /**
-*   @class BinaryOperationCommand
+*   @class Binary_Op_Command
 *
 *   A type of Command that involves two integers to be evaluated with some operator.
 *	
 *	Command Pattern
 */
-class BinaryOperationCommand : public Command {
+class Binary_Op_Command : public Command {
 
 public:
 	// Default constructor
-	BinaryOperationCommand(void);
+	Binary_Op_Command(void);
 
 	/**
 	*   Initializing constructor
 	*
 	*   @param: precedence          for implementating order-of-operations
 	*/
-	BinaryOperationCommand(int);
+	Binary_Op_Command(int);
 
 	/**
 	*   Executes on an input stack

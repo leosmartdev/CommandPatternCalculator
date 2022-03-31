@@ -1,27 +1,27 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "NumberCommand.h"
+#include "Num_Command.h"
 
 //  constructor
-NumberCommand::NumberCommand() : _number(0) 
+Num_Command::Num_Command() : _number(0) 
 {
 
 }
 
 //  number constructor
-NumberCommand::NumberCommand(int num) : _number(num) 
+Num_Command::Num_Command(int num) : _number(num) 
 {
 	// 
 }
 
 //  execute
-void NumberCommand::execute(Stack<int> & stack) 
+void Num_Command::execute(Stack<int> & stack) 
 {
 	stack.push(this->evaluate());
 }
 
 //  evaluate
-int NumberCommand::evaluate() 
+int Num_Command::evaluate() 
 {
 	return this->_number;
 }

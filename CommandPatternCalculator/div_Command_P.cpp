@@ -1,19 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <stdexcept>
-#include "StackExpressionCommandFactory.h"
+#include "Stack_Exp_Command_Factory.h"
 
 // precedence of divide operator
 #define MEDIUM_PRECEDENCE 2
 
 //  default constructor
-DivideCommand::DivideCommand() : BinaryOperationCommand(MEDIUM_PRECEDENCE) 
+div_Command_P::div_Command_P() : Binary_Op_Command(MEDIUM_PRECEDENCE) 
 {
 
 }
 
 //  evaluate
-int DivideCommand::evaluate(int left, int right) 
+int div_Command_P::evaluate(int left, int right) 
 {
 	// exception if divide by zero
 	if (!right)

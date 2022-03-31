@@ -1,28 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <stdexcept>
-#include "BinaryOperationCommand.h"
+#include "Binary_Op_Command.h"
 
 //  default constructor
-BinaryOperationCommand::BinaryOperationCommand() : _precedence(0) 
+Binary_Op_Command::Binary_Op_Command() : _precedence(0) 
 {
 	
 }
 
 //  precedence constructor
-BinaryOperationCommand::BinaryOperationCommand(int precedence) : _precedence(precedence) 
+Binary_Op_Command::Binary_Op_Command(int precedence) : _precedence(precedence) 
 {
 	
 }
 
 //  get_precedence
-int BinaryOperationCommand::get_precedence() 
+int Binary_Op_Command::get_precedence() 
 {
 	return this->_precedence;
 }
 
 //  execute
-void BinaryOperationCommand::execute(Stack<int> & stack) 
+void Binary_Op_Command::execute(Stack<int> & stack) 
 {
 	// first pop will be the right operand
 	int right = stack.top();

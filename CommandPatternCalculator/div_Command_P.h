@@ -3,25 +3,25 @@
 #ifndef _DIVIDE_COMMAND_H_
 #define _DIVIDE_COMMAND_H_
 
-#include "BinaryOperationCommand.h"
+#include "Binary_Op_Command.h"
 
 /**
-*   @class DivideCommand
-*   A type of BinaryOperationCommand that divides two numbers.
+*   @class div_Command_P
+*   A type of Binary_Op_Command that divides two numbers.
 *
 *	Command Pattern
 */
-class DivideCommand : public BinaryOperationCommand {
+class div_Command_P : public Binary_Op_Command {
 
 public:
 	// Default constructor.
-	DivideCommand(void);
+	div_Command_P(void);
 
 	/**
 	*   Initializing constructor
 	*   @param: precedence          for implementating order-of-operations
 	*/
-	DivideCommand(int);
+	div_Command_P(int);
 
 	/**
 	*   Divides two integers

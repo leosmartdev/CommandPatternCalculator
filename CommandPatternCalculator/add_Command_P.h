@@ -3,20 +3,20 @@
 #ifndef _ADD_COMMAND_H_
 #define _ADD_COMMAND_H_
 
-#include "BinaryOperationCommand.h"
+#include "Binary_Op_Command.h"
 
 /**
-*   @class AddCommand
+*   @class add_Command_P
 *
 *   adds two numbers.
 *
 *	Command Pattern
 */
-class AddCommand : public BinaryOperationCommand {
+class add_Command_P : public Binary_Op_Command {
 
 public:
 	// Default constructor.
-	AddCommand(void);
+	add_Command_P(void);
 
 	/**
 	*   Initializing constructor
@@ -24,7 +24,7 @@ public:
 	*   @param: precedence
 	*	@description: for implementating order-of-operations
 	*/
-	AddCommand(int);
+	add_Command_P(int);
 
 	/**
 	*   Adds two integers

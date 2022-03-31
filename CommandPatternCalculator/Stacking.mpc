@@ -5,14 +5,14 @@ project (StackingProject) {
     Source_Files {
         driver.cpp
         Client.cpp
-        StackExpressionCommandFactory.cpp
-        NumberCommand.cpp
-        BinaryOperationCommand.cpp
-        AddCommand.cpp
-        SubtractCommand.cpp
-        MultiplyCommand.cpp
-        DivideCommand.cpp
-        ModuloCommand.cpp
+        Stack_Exp_Command_Factory.cpp
+        Num_Command.cpp
+        Binary_Op_Command.cpp
+        add_Command_P.cpp
+        sub_Command_P.cpp
+        mul_Command_P.cpp
+        div_Command_P.cpp
+        mod_Command_P.cpp
     }
 
     Header_Files {
@@ -20,16 +20,16 @@ project (StackingProject) {
         Array.h
         Stack.h
         Client.h
-        ExpressionCommandFactory.h
-        StackExpressionCommandFactory.h
+        Exp_Command_Factory.h
+        Stack_Exp_Command_Factory.h
         Command.h
-        NumberCommand.h
-        BinaryOperationCommand.h
-        AddCommand.h
-        SubtractCommand.h
-        MultiplyCommand.h
-        DivideCommand.h
-        ModuloCommand.h
+        Num_Command.h
+        Binary_Op_Command.h
+        add_Command_P.h
+        sub_Command_P.h
+        mul_Command_P.h
+        div_Command_P.h
+        mod_Command_P.h
     }
 
     Inline_Files {

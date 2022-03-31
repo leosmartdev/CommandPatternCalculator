@@ -1,18 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "StackExpressionCommandFactory.h"
+#include "Stack_Exp_Command_Factory.h"
 
 // precedence of subtract operator
 #define LOW_PRECEDENCE 1
 
 //  default constructor
-SubtractCommand::SubtractCommand() : BinaryOperationCommand(LOW_PRECEDENCE) 
+sub_Command_P::sub_Command_P() : Binary_Op_Command(LOW_PRECEDENCE) 
 {
 	// 
 }
 
 //  evaluate
-int SubtractCommand::evaluate(int left, int right) 
+int sub_Command_P::evaluate(int left, int right) 
 {
 	return left - right;
 }
