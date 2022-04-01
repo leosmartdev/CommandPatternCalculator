@@ -27,7 +27,7 @@ public:
 	*   @param         value               integer value
 	*   @return             number command      command representing a number
 	*/
-	Num_Command * create_number_command(int num);
+	Num_Command * create_num_command(int num);
 
 	/**
 	*   Creates and returns a command representing an addition operator
@@ -41,28 +41,28 @@ public:
 	*
 	*   @return             subtract command    command representing a subtraction operator
 	*/
-	sub_Command_P * create_subtract_command(void);
+	sub_Command_P * create_sub_command(void);
 
 	/**
 	*   Creates and returns a command representing a multiplcation operator
 	*
 	*   @return             multiply command    command representing a multiplcation operator
 	*/
-	virtual mul_Command_P * create_multiply_command(void);
+	virtual mul_Command_P * create_mul_command(void);
 
 	/**
 	*   Creates and returns a command representing a division operator
 	*
 	*   @return             divide command      command representing a division operator
 	*/
-	div_Command_P * create_divide_command(void);
+	div_Command_P * create_div_command(void);
 
 	/**
 	*   Creates and returns a command representing a modulo operator
 	*
 	*   @return             modulo command      command representing a modulo operator
 	*/
-	mod_Command_P * create_modulo_command(void);
+	mod_Command_P * create_mod_command(void);
 };
 
 #endif

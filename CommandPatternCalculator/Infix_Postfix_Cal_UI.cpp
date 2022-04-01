@@ -21,7 +21,7 @@ using std::endl;
 using std::string;
 
 /**
-*   Parses an std string into a string array.
+*   Parses string into a string array.
 *   @param: std::string             user input infix expression
 *   @return: Array<std::string>      infix expression
 */
@@ -36,10 +36,10 @@ Array<string> parse(string infix) {
 	while (getline(ss, token, ' '))
 		items.push(token);
 
-	// resultant infix array
+	// infix array
 	Array<string> infix_array(items.size());
 
-	// pop all queue items into infix array
+	// pop all items into infix array
 	for (int i = 0; i < infix_array.size(); i++) {
 		infix_array[i] = items.front();
 		items.pop();
@@ -50,48 +50,35 @@ Array<string> parse(string infix) {
 }
 
 /**
-*   Determines if the input string can be converted into an integer by actually converting it.
+*   Determines if the input string can be converted into an integer.
 *   @param: std::string             input string
 *   @return: bool=true               input as int is a valid int
 *   @return: bool=false              input as int is an invalid int
 */
 bool is_integer(string str) {
 
-	// convert string to char array for compatability with strtol
 	const char * character_list = str.c_str();
 
 	char * ptr_to_last_consumed_character;
 
-	// number's base
 	int radix = 10;
 
-	// try to convert the character array to a base10 int
 	long value = std::strtol(character_list, &ptr_to_last_consumed_character, radix);
 
 	// if the starting character is invalid (i.e. not a '+', '-', nor a digit)
 	if (ptr_to_last_consumed_character == character_list) {
-
-		// invalid number
+		// invalid
 		return false;
 	}
 	else if (*ptr_to_last_consumed_character != '\0') {
-
-		// invalid number
+		// invalid
 		return false;
-
-		// all characters are valid number characters
 	}
 	else {
-
-		// if the number is larger than or smaller than the maximum or minimum possible values of an integer
 		if ((int)value != value) {
-
-			// invalid integer
 			return false;
 		}
 		else {
-
-			// valid integer
 			return true;
 		}
 	}
@@ -109,8 +96,8 @@ bool is_valid(Array<string> & infix) {
 	int opened = 0;
 
 	// 0: nothing
-	// 1: left-parenthesis
-	// 2: right-parenthesis
+	// 1: first-parenthesis
+	// 2: second-parenthesis
 	// 3: operator
 	// 4: operand
 	int last_type = 0;
@@ -124,7 +111,7 @@ bool is_valid(Array<string> & infix) {
 		if (is_integer(infix[i])) {
 
 			// invalid format if integer follows a
-			// right-parenthesis or an operand
+			// second-parenthesis or an operand
 			if (last_type == 2 || last_type == 4)
 				return false;
 
@@ -143,12 +130,12 @@ bool is_valid(Array<string> & infix) {
 				// increment number of opened parenthesis
 				opened++;
 
-				// invalid format if left-parenthesis follows a
-				// right-parenthesis or an operand
+				// invalid format if first-parenthesis follows a
+				// second-parenthesis or an operand
 				if (last_type == 2 || last_type == 4)
 					return false;
 
-				// mark current item as left-parenthesis
+				// mark current item as first-parenthesis
 				last_type = 1;
 
 				// get out of the switch statement
@@ -159,12 +146,12 @@ bool is_valid(Array<string> & infix) {
 				// decrement number of opened parenthesis
 				opened--;
 
-				// invalid format if right-parenthesis is the first
-				// item or follows a left-parenthesis or an operator
+				// invalid format if second-parenthesis is the first
+				// item or follows a first-parenthesis or an operator
 				if (last_type == 0 || last_type == 1 || last_type == 3)
 					return false;
 
-				// mark current item as right-parenthesis
+				// mark current item as second-parenthesis
 				last_type = 2;
 
 				// get out of the switch statement
@@ -177,7 +164,7 @@ bool is_valid(Array<string> & infix) {
 			case '%':
 
 				// invalid format if any of the above operators is the
-				// first item or follows a left-parenthesis or an operator
+				// first item or follows a first-parenthesis or an operator
 				if (last_type == 0 || last_type == 1 || last_type == 3)
 					return false;
 
@@ -217,11 +204,11 @@ bool is_valid(Array<string> & infix) {
 }
 
 /**
-*   Returns operator precedence to use for order-of-operations
+*   Returns operator priority to use for order-of-operations
 *   @param: std::string             some operator in string format
-*   @return: int                     precedence level
+*   @return: int                     priority level
 */
-int get_precedence(std::string op) {
+int get_priority(std::string op) {
 
 	if (op == "%" || op == "/" || op == "*")
 		return 2;
@@ -269,7 +256,7 @@ Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factor
 			else {
 
 				while (!postfix_stack.is_empty() &&
-					get_precedence(postfix_stack.top()) >= get_precedence(infix[i])) {
+					get_priority(postfix_stack.top()) >= get_priority(infix[i])) {
 
 					postfix_queue.push(postfix_stack.top());
 					postfix_stack.pop();
@@ -297,19 +284,19 @@ Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factor
 			cmd = factory.create_add_command();
 		}
 		else if (item == "-") {
-			cmd = factory.create_subtract_command();
+			cmd = factory.create_sub_command();
 		}
 		else if (item == "*") {
-			cmd = factory.create_multiply_command();
+			cmd = factory.create_mul_command();
 		}
 		else if (item == "/") {
-			cmd = factory.create_divide_command();
+			cmd = factory.create_div_command();
 		}
 		else if (item == "%") {
-			cmd = factory.create_modulo_command();
+			cmd = factory.create_mod_command();
 		}
 		else {
-			cmd = factory.create_number_command(std::stoi(item));
+			cmd = factory.create_num_command(std::stoi(item));
 		}
 
 		postfix_array[i] = cmd;

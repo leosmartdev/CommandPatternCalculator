@@ -3,21 +3,18 @@
 #include <stdexcept>
 #include "Stack_Exp_Command_Factory.h"
 
-// precedence of modulus operator
-#define MEDIUM_PRECEDENCE 2
-
 //  default constructor
-mod_Command_P::mod_Command_P() : Binary_Op_Command(MEDIUM_PRECEDENCE) 
+mod_Command_P::mod_Command_P() : Binary_Op_Command(2) 
 {
 
 }
 
 //  evaluate
-int mod_Command_P::evaluate(int left, int right) 
+int mod_Command_P::evaluate(int first, int second) 
 {
-	// exception if right-hand number is zero
-	if (!right)
+	// exception if second-hand number is zero
+	if (!second)
 		throw std::overflow_error("Invalid Denominator: Mod by zero exception.");
 
-	return left % right;
+	return first % second;
 }

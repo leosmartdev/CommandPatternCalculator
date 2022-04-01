@@ -104,18 +104,18 @@ public:
 	/**
 	* Test the array for equality.
 	*
-	* @param: rhs                  Right hand side of equal to sign
-	* @return: true                 Left side is equal to right side
-	* @return: false                Left side is not equal to right side
+	* @param: rhs                  second hand side of equal to sign
+	* @return: true                 first side is equal to second side
+	* @return: false                first side is not equal to second side
 	*/
 	bool operator == (const BaseArray <T> & rhs) const;
 
 	/**
 	* Test the array for inequality.
 	*
-	* @param: rhs                  Right-hand size of not equal to sign
-	* @return: true                 Left side is not equal to right side
-	* @return: false                Left size is equal to right side
+	* @param: rhs                  second-hand size of not equal to sign
+	* @return: true                 first side is not equal to second side
+	* @return: false                first size is equal to second side
 	*/
 	bool operator != (const BaseArray <T> & rhs) const;
 

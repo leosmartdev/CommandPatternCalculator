@@ -21,15 +21,15 @@ public:
 	/**
 	*   Initializing constructor
 	*
-	*   @param: precedence          for implementating order-of-operations
+	*   @param: priority          for implementating order-of-operations
 	*/
 	mod_Command_P(int);
 
 	/**
 	*   Mods two integers
 	*
-	*   @param: left                left-hand operand
-	*   @param: right               right-hand operand
+	*   @param: first                first-hand operand
+	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*   @exception: overflow_error      denominator is zero
 	*/

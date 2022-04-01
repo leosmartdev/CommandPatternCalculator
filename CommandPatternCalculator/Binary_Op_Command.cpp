@@ -4,45 +4,40 @@
 #include "Binary_Op_Command.h"
 
 //  default constructor
-Binary_Op_Command::Binary_Op_Command() : _precedence(0) 
+Binary_Op_Command::Binary_Op_Command() : _priority(0) 
 {
 	
 }
 
-//  precedence constructor
-Binary_Op_Command::Binary_Op_Command(int precedence) : _precedence(precedence) 
+//  priority constructor
+Binary_Op_Command::Binary_Op_Command(int priority) : _priority(priority) 
 {
 	
 }
 
-//  get_precedence
-int Binary_Op_Command::get_precedence() 
+//  get_priority
+int Binary_Op_Command::get_priority() 
 {
-	return this->_precedence;
+	return this->_priority;
 }
 
 //  execute
 void Binary_Op_Command::execute(Stack<int> & stack) 
 {
-	// first pop will be the right operand
-	int right = stack.top();
+	// first pop will be the second operand
+	int second = stack.top();
 	stack.pop();
 
-	// second pop will be the left operand
-	int left = stack.top();
+	// second pop will be the first operand
+	int first = stack.top();
 	stack.pop();
 
-	// handle math exception
+	// handle exception
 	try {
-
-		// evaluate (this must be some operator) and push onto stack
-		int result = this->evaluate(left, right);
+		int result = this->evaluate(first, second);
 		stack.push(result);
-
 	}
 	catch (std::overflow_error e) {
-
-		// throw it again
 		throw e;
 	}
 

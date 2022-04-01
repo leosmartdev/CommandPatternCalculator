@@ -42,7 +42,7 @@ public:
     /**
      * Assignment operator
      *
-     * @param     rhs           Right-hand side of operator
+     * @param     rhs           second-hand side of operator
      * @return         Reference to self
      */
     const Stack & operator = (const Stack & rhs);

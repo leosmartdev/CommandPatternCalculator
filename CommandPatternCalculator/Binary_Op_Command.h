@@ -23,7 +23,7 @@ public:
 	/**
 	*   Initializing constructor
 	*
-	*   @param: precedence          for implementating order-of-operations
+	*   @param: priority          for implementating order-of-operations
 	*/
 	Binary_Op_Command(int);
 
@@ -35,24 +35,24 @@ public:
 	void execute(Stack<int> &);
 
 	/**
-	*   Returns the precedence of some binary operator
+	*   Returns the priority of some binary operator
 	*
-	*   @return: precedence          for implementating order-of-operations
+	*   @return: priority          for implementating order-of-operations
 	*/
-	int get_precedence(void);
+	int get_priority(void);
 
 	/**
 	*   Evaluates two integers
 	*
-	*   @param: left                left-hand operand
-	*   @param: right               right-hand operand
+	*   @param: first                first-hand operand
+	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*/
 	virtual int evaluate(int, int) = 0;
 
 protected:
-	// precedence of the binary operator in a typical expression
-	int _precedence;
+	// priority of the binary operator in a typical expression
+	int _priority;
 };
 
 #endif

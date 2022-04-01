@@ -1,0 +1,17 @@
+﻿  Binary_Op_Command.cpp
+  Infix_Postfix_Cal_UI.cpp
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(43): warning C4018: '<': signed/unsigned mismatch
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(121): warning C4018: '<': signed/unsigned mismatch
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(249): warning C4018: '<': signed/unsigned mismatch
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(292): warning C4018: '<': signed/unsigned mismatch
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(336): warning C4018: '<': signed/unsigned mismatch
+e:\dev\c\calculator\commandpatterncalculator\commandpatterncalculator\infix_postfix_cal_ui.cpp(341): warning C4018: '<': signed/unsigned mismatch
+  Num_Command.cpp
+  Stack_Exp_Command_Factory.cpp
+  add_Command_P.cpp
+  div_Command_P.cpp
+  mod_Command_P.cpp
+  mul_Command_P.cpp
+  sub_Command_P.cpp
+  Generating Code...
+  CommandPatternCalculator.vcxproj -> E:\dev\C\Calculator\CommandPatternCalculator\Debug\CommandPatternCalculator.exe

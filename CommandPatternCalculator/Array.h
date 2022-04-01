@@ -48,7 +48,7 @@ public:
 	/**
 	* Assignment operation
 	*
-	* @param: rhs      Right-hand side of equal sign
+	* @param: rhs      second-hand side of equal sign
 	* @return: Reference to self
 	*/
 	const Array & operator = (const Array & rhs);
@@ -78,7 +78,7 @@ private:
 	 * @param: current size
 	 * @return: new maximum size
 	 */
-	uInt bound_max(uInt max, uInt cur);
+	uInt size_bound(uInt max, uInt cur);
 };
 
 // max_size

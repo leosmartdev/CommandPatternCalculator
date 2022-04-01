@@ -21,15 +21,15 @@ public:
 	/**
 	*   Initializing constructor
 	*
-	*   @param: precedence          for implementating order-of-operations
+	*   @param: priority          for implementating order-of-operations
 	*/
 	mul_Command_P(int);
 
 	/**
 	*   Multiplies two integers
 	*
-	*   @param: left                left-hand operand
-	*   @param: right               right-hand operand
+	*   @param: first                first-hand operand
+	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*/
 	int evaluate(int, int);

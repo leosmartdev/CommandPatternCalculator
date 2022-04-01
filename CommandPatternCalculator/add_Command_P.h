@@ -8,7 +8,7 @@
 /**
 *   @class add_Command_P
 *
-*   adds two numbers.
+*   add two numbers.
 *
 *	Command Pattern
 */
@@ -21,16 +21,16 @@ public:
 	/**
 	*   Initializing constructor
 	*
-	*   @param: precedence
-	*	@description: for implementating order-of-operations
+	*   @param: priority
+	*	@description: for order of operations
 	*/
 	add_Command_P(int);
 
 	/**
 	*   Adds two integers
 	*
-	*   @param: left                left-hand operand
-	*   @param: right               right-hand operand
+	*   @param: first                first-hand operand
+	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*/
 	int evaluate(int, int);

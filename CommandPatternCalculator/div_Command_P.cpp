@@ -3,21 +3,18 @@
 #include <stdexcept>
 #include "Stack_Exp_Command_Factory.h"
 
-// precedence of divide operator
-#define MEDIUM_PRECEDENCE 2
-
 //  default constructor
-div_Command_P::div_Command_P() : Binary_Op_Command(MEDIUM_PRECEDENCE) 
+div_Command_P::div_Command_P() : Binary_Op_Command(2) 
 {
 
 }
 
 //  evaluate
-int div_Command_P::evaluate(int left, int right) 
+int div_Command_P::evaluate(int first, int second) 
 {
 	// exception if divide by zero
-	if (!right)
-		throw std::overflow_error("Invalid Denominator: Divide by zero exception.");
+	if (second == 0)
+		throw std::overflow_error("Invalid: Divide by zero.");
 
-	return left / right;
+	return first / second;
 }

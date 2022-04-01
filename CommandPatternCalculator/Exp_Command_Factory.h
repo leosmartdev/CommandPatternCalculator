@@ -26,19 +26,13 @@ public:
 	// Destructor
 	virtual ~Exp_Command_Factory(void) {};
 
-	// Copy constructor (deleted)
-	Exp_Command_Factory(const Exp_Command_Factory &) = delete;
-
-	// Equals operator (deleted)
-	const Exp_Command_Factory & operator = (const Exp_Command_Factory &) = delete;
-
 	/**
 	*   Creates and returns a command representing some integer value
 	*
 	*   @param: value               integer value
 	*   @return: number command      command representing a number
 	*/
-	virtual Num_Command * create_number_command(int num) = 0;
+	virtual Num_Command * create_num_command(int num) = 0;
 
 	/**
 	*   Creates and returns a command representing an addition operator
@@ -51,25 +45,25 @@ public:
 	*   Creates and returns a command representing a subtraction operator
 	*   @return: subtract command    command representing a subtraction operator
 	*/
-	virtual sub_Command_P * create_subtract_command(void) = 0;
+	virtual sub_Command_P * create_sub_command(void) = 0;
 
 	/**
 	*   Creates and returns a command representing a multiplcation operator
 	*   @return: multiply command    command representing a multiplcation operator
 	*/
-	virtual mul_Command_P * create_multiply_command(void) = 0;
+	virtual mul_Command_P * create_mul_command(void) = 0;
 
 	/**
 	*   Creates and returns a command representing a division operator
 	*   @return: divide command      command representing a division operator
 	*/
-	virtual div_Command_P * create_divide_command(void) = 0;
+	virtual div_Command_P * create_div_command(void) = 0;
 
 	/**
 	*   Creates and returns a command representing a modulo operator
 	*   @return: modulo command      command representing a modulo operator
 	*/
-	virtual mod_Command_P * create_modulo_command(void) = 0;
+	virtual mod_Command_P * create_mod_command(void) = 0;
 };
 
 #endif
