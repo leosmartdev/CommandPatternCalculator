@@ -5,7 +5,7 @@
 
 // Array - default constructor
 template <typename T>
-Array <T>::Array(void) : BaseArray <T>(), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(void) : Basic_Array <T>(), _max_size(DEFAULT_MAX_SIZE) 
 {
 	delete[] this->_data;
 	this->_data = new T[DEFAULT_MAX_SIZE];
@@ -14,7 +14,7 @@ Array <T>::Array(void) : BaseArray <T>(), _max_size(DEFAULT_MAX_SIZE)
 
 // Array - length constructor
 template <typename T> 
-Array <T>::Array(uInt length) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(uInt length) : Basic_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
 {
 	// resize
 	if (length >= 0)
@@ -23,7 +23,7 @@ Array <T>::Array(uInt length) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_size(DEFAU
 
 // Array (uInt, value)
 template <typename T>
-Array <T>::Array(uInt length, T fill) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
+Array <T>::Array(uInt length, T fill) : Basic_Array <T>(DEFAULT_MAX_SIZE), _max_size(DEFAULT_MAX_SIZE) 
 {
 	// resize
 	if (length >= 0)
@@ -35,7 +35,7 @@ Array <T>::Array(uInt length, T fill) : BaseArray <T>(DEFAULT_MAX_SIZE), _max_si
 
 // Array (const Array &)
 template <typename T>
-Array <T>::Array(const Array & array) : BaseArray <T>(), _max_size(array.max_size()) 
+Array <T>::Array(const Array & array) : Basic_Array <T>(), _max_size(array.max_size()) 
 {
 	delete[] this->_data;
 	this->_data = new T[array.max_size()];
@@ -50,7 +50,7 @@ Array <T>::Array(const Array & array) : BaseArray <T>(), _max_size(array.max_siz
 template <typename T>
 Array <T>::~Array(void) 
 {
-	// BaseArray destructor will be implemented
+	// Basic_Array destructor will be implemented
 }
 
 // operator =
@@ -87,7 +87,7 @@ void Array <T>::resize(uInt new_size)
 	// if new size is larger than max
 	if (new_size > this->_max_size) {
 		
-		int new_max = this->size_bound(this->_max_size, new_size);
+		int new_max = this->size_limit(this->_max_size, new_size);
 
 		T * tmp = new T[new_max];
 
@@ -110,9 +110,9 @@ void Array <T>::resize(uInt new_size)
 	}
 }
 
-// size_bound (private)
+// size_limit (private)
 template <typename T>
-uInt Array <T>::size_bound(uInt max, uInt cur) {
+uInt Array <T>::size_limit(uInt max, uInt cur) {
 
 	// double the current max size until the new size fits
 	uInt new_max = max;

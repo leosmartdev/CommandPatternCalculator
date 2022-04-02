@@ -17,11 +17,11 @@ Num_Command::Num_Command(int num) : _number(num)
 //  execute
 void Num_Command::execute(Stack<int> & stack) 
 {
-	stack.push(this->evaluate());
+	stack.push(this->get_val());
 }
 
-//  evaluate
-int Num_Command::evaluate() 
+//  get_val
+int Num_Command::get_val() 
 {
 	return this->_number;
 }

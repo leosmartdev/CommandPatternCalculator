@@ -53,7 +53,7 @@
     <ClInclude Include="Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseArray.h">
+    <ClInclude Include="Basic_Array.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Binary_Op_Command.h">

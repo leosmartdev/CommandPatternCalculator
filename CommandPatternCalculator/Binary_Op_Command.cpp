@@ -34,7 +34,7 @@ void Binary_Op_Command::execute(Stack<int> & stack)
 
 	// handle exception
 	try {
-		int result = this->evaluate(first, second);
+		int result = this->get_val(first, second);
 		stack.push(result);
 	}
 	catch (std::overflow_error e) {

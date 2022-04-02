@@ -9,8 +9,8 @@ mod_Command_P::mod_Command_P() : Binary_Op_Command(2)
 
 }
 
-//  evaluate
-int mod_Command_P::evaluate(int first, int second) 
+//  get_val
+int mod_Command_P::get_val(int first, int second) 
 {
 	// exception if second-hand number is zero
 	if (!second)

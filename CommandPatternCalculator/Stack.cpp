@@ -1,4 +1,37 @@
-// Stack
+#include <stdexcept> 
+
+// size
+template <typename T>
+inline
+uInt Stack <T>::size(void) const {
+
+	// top index + 1 is the number of elements
+	//  in the stack
+	return this->_top + 1;
+}
+
+// top
+template <typename T>
+inline
+T Stack <T>::top(void) const {
+
+	// exception if empty
+	if (this->is_empty())
+		throw Stack <T>::empty_exception();
+
+	// return last element
+	return this->_data->get(this->_top);
+}
+
+// is_empty
+template <typename T>
+inline
+bool Stack <T>::is_empty(void) const 
+{
+	// stack empty when top is -1
+	return this->_top < 0;
+}
+
 template <typename T>
 Stack <T>::Stack(void) : _data(new Array<T>()), _top(-1) 
 {
@@ -13,7 +46,6 @@ Stack <T>::Stack(const Stack & stack) : _data(new Array<T>(stack._data->size()))
 	if (this == &stack)
 		return;
 
-	// mimic data members of input stack (by value!)
 	*this->_data = *stack._data;
 	this->_top = stack._top;
 }
@@ -22,7 +54,6 @@ Stack <T>::Stack(const Stack & stack) : _data(new Array<T>(stack._data->size()))
 template <typename T>
 Stack <T>::~Stack(void) 
 {
-	// call Array destructor
 	delete this->_data;
 }
 
@@ -35,7 +66,6 @@ const Stack <T> & Stack <T>::operator = (const Stack & rhs)
 		return *this;
 	}
 
-	// mimic data members of rhs stack (by value!)
 	*this->_data = *rhs._data;
 	this->_top = rhs._top;
 
@@ -49,7 +79,6 @@ void Stack <T>::push(T element)
 	// Make space in the array:
 	// if top has reached end of array
 	if (this->size() >= this->_data->size()) {
-		// resize
 		this->_data->resize(this->size() + 1);
 	}
 
@@ -66,7 +95,6 @@ void Stack <T>::pop(void)
 	if (this->is_empty())
 		throw Stack <T>::empty_exception();
 
-	// decrement top
 	this->_top--;
 }
 
@@ -74,6 +102,5 @@ void Stack <T>::pop(void)
 template <typename T>
 void Stack <T>::clear(void) 
 {
-	// reset top
 	this->_top = -1;
 }

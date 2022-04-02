@@ -16,7 +16,7 @@ project (StackingProject) {
     }
 
     Header_Files {
-        BaseArray.h
+        Basic_Array.h
         Array.h
         Stack.h
         Client.h
@@ -33,13 +33,13 @@ project (StackingProject) {
     }
 
     Inline_Files {
-        BaseArray.inl
+        Basic_Array.inl
         Array.inl
         Stack.inl
     }
 
     Template_Files {
-        BaseArray.cpp
+        Basic_Array.cpp
         Array.cpp
         Stack.cpp
     }

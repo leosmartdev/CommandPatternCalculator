@@ -8,24 +8,24 @@
 typedef unsigned int uInt;
 
 /**
- * @class BaseArray
+ * @class Basic_Array
  *
  * Template Pattern
  */
 template <typename T>
-class BaseArray {
+class Basic_Array {
 
 public:
 
 	// Default constructor.
-	BaseArray(void);
+	Basic_Array(void);
 
 	/**
 	* Initializing constructor.
 	*
 	* @param: length        Initial size
 	*/
-	BaseArray(uInt length);
+	Basic_Array(uInt length);
 
 	/**
 	* Initializing constructor.
@@ -33,17 +33,17 @@ public:
 	* @param: length        Initial size
 	* @param: fill          Initial value for each element
 	*/
-	BaseArray(uInt length, T fill);
+	Basic_Array(uInt length, T fill);
 
 	/**
 	* Copy constructor
 	*
 	* @param: arr         The source array.
 	*/
-	BaseArray(const BaseArray <T> & arr);
+	Basic_Array(const Basic_Array <T> & arr);
 
 	// Destructor.
-	~BaseArray(void);
+	~Basic_Array(void);
 
 	/**
 	* Retrieve the current size of the array.
@@ -108,7 +108,7 @@ public:
 	* @return: true                 first side is equal to second side
 	* @return: false                first side is not equal to second side
 	*/
-	bool operator == (const BaseArray <T> & rhs) const;
+	bool operator == (const Basic_Array <T> & rhs) const;
 
 	/**
 	* Test the array for inequality.
@@ -117,7 +117,7 @@ public:
 	* @return: true                 first side is not equal to second side
 	* @return: false                first size is equal to second side
 	*/
-	bool operator != (const BaseArray <T> & rhs) const;
+	bool operator != (const Basic_Array <T> & rhs) const;
 
 	/**
 	* Fill the contents of the array.
@@ -137,10 +137,10 @@ protected:
 // size
 template <typename T>
 inline
-uInt BaseArray <T>::size(void) const {
+uInt Basic_Array <T>::size(void) const {
 	return this->_cur_size;
 }
 
-#include "BaseArray.cpp"
+#include "Basic_Array.cpp"
 
 #endif   // !defined _BASE_ARRAY_H_

@@ -48,7 +48,7 @@ public:
 	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*/
-	virtual int evaluate(int, int) = 0;
+	virtual int get_val(int, int) = 0;
 
 protected:
 	// priority of the binary operator in a typical expression

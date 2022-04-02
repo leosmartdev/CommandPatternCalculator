@@ -3,7 +3,7 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
-#include "BaseArray.h"
+#include "Basic_Array.h"
 
 typedef unsigned int uInt;
 
@@ -13,7 +13,7 @@ typedef unsigned int uInt;
  * Template Pattern
  */
 template <typename T>
-class Array : public BaseArray <T> {
+class Array : public Basic_Array <T> {
 
 public:
 
@@ -78,7 +78,7 @@ private:
 	 * @param: current size
 	 * @return: new maximum size
 	 */
-	uInt size_bound(uInt max, uInt cur);
+	uInt size_limit(uInt max, uInt cur);
 };
 
 // max_size

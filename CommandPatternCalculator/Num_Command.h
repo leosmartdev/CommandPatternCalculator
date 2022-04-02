@@ -38,7 +38,7 @@ public:
 	*
 	*   @return             number              stored int number
 	*/
-	int evaluate(void);
+	int get_val(void);
 
 private:
 	// stored number of a typical expression

@@ -27,26 +27,26 @@ using std::string;
 */
 Array<string> parse(string infix) {
 
-	std::stringstream ss;
+	std::stringstream input_stream;
 	string token;
-	std::queue<string> items;
+	std::queue<string> input_items;
 
-	ss.clear();
-	ss.str(infix);
-	while (getline(ss, token, ' '))
-		items.push(token);
+	input_stream.clear();
+	input_stream.str(infix);
+	while (getline(input_stream, token, ' '))
+		input_items.push(token);
 
 	// infix array
-	Array<string> infix_array(items.size());
+	Array<string> arr_infix(input_items.size());
 
-	// pop all items into infix array
-	for (int i = 0; i < infix_array.size(); i++) {
-		infix_array[i] = items.front();
-		items.pop();
+	// pop all input_items into infix array
+	for (int i = 0; i < arr_infix.size(); i++) {
+		arr_infix[i] = input_items.front();
+		input_items.pop();
 	}
 
 	// return infix expression
-	return infix_array;
+	return arr_infix;
 }
 
 /**
@@ -57,20 +57,20 @@ Array<string> parse(string infix) {
 */
 bool is_integer(string str) {
 
-	const char * character_list = str.c_str();
+	const char * chr_lst = str.c_str();
 
-	char * ptr_to_last_consumed_character;
+	char * ptr_to_last_ch;
 
-	int radix = 10;
+	int rad = 10;
 
-	long value = std::strtol(character_list, &ptr_to_last_consumed_character, radix);
+	long value = std::strtol(chr_lst, &ptr_to_last_ch, rad);
 
 	// if the starting character is invalid (i.e. not a '+', '-', nor a digit)
-	if (ptr_to_last_consumed_character == character_list) {
+	if (ptr_to_last_ch == chr_lst) {
 		// invalid
 		return false;
 	}
-	else if (*ptr_to_last_consumed_character != '\0') {
+	else if (*ptr_to_last_ch != '\0') {
 		// invalid
 		return false;
 	}
@@ -100,7 +100,7 @@ bool is_valid(Array<string> & infix) {
 	// 2: second-parenthesis
 	// 3: operator
 	// 4: operand
-	int last_type = 0;
+	int lst_ch_type = 0;
 
 	// while looping through infix array, check for the following:
 	// - balanced parenthesis
@@ -112,13 +112,10 @@ bool is_valid(Array<string> & infix) {
 
 			// invalid format if integer follows a
 			// second-parenthesis or an operand
-			if (last_type == 2 || last_type == 4)
+			if (lst_ch_type == 2 || lst_ch_type == 4)
 				return false;
 
-			// mark current item as operand
-			last_type = 4;
-
-			// check for a 1 character string
+			lst_ch_type = 4;
 		}
 		else if (infix[i].size() == 1) {
 
@@ -132,11 +129,11 @@ bool is_valid(Array<string> & infix) {
 
 				// invalid format if first-parenthesis follows a
 				// second-parenthesis or an operand
-				if (last_type == 2 || last_type == 4)
+				if (lst_ch_type == 2 || lst_ch_type == 4)
 					return false;
 
 				// mark current item as first-parenthesis
-				last_type = 1;
+				lst_ch_type = 1;
 
 				// get out of the switch statement
 				break;
@@ -148,11 +145,11 @@ bool is_valid(Array<string> & infix) {
 
 				// invalid format if second-parenthesis is the first
 				// item or follows a first-parenthesis or an operator
-				if (last_type == 0 || last_type == 1 || last_type == 3)
+				if (lst_ch_type == 0 || lst_ch_type == 1 || lst_ch_type == 3)
 					return false;
 
 				// mark current item as second-parenthesis
-				last_type = 2;
+				lst_ch_type = 2;
 
 				// get out of the switch statement
 				break;
@@ -165,11 +162,11 @@ bool is_valid(Array<string> & infix) {
 
 				// invalid format if any of the above operators is the
 				// first item or follows a first-parenthesis or an operator
-				if (last_type == 0 || last_type == 1 || last_type == 3)
+				if (lst_ch_type == 0 || lst_ch_type == 1 || lst_ch_type == 3)
 					return false;
 
 				// mark current item as operator
-				last_type = 3;
+				lst_ch_type = 3;
 
 				// get out of the switch statement
 				break;
@@ -192,7 +189,7 @@ bool is_valid(Array<string> & infix) {
 
 	// if last item is "(" or some operator,
 	// then we have an invalid expression
-	if (last_type == 1 || last_type == 3)
+	if (lst_ch_type == 1 || lst_ch_type == 3)
 		return false;
 
 	// if opened is more than zero, we have too many "(",
@@ -208,7 +205,7 @@ bool is_valid(Array<string> & infix) {
 *   @param: std::string             some operator in string format
 *   @return: int                     priority level
 */
-int get_priority(std::string op) {
+int op_priority(std::string op) {
 
 	if (op == "%" || op == "/" || op == "*")
 		return 2;
@@ -227,58 +224,58 @@ int get_priority(std::string op) {
 Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factory & factory) {
 
 	// easier to push into than Array
-	std::queue<string> postfix_queue;
+	std::queue<string> enqueue_postfixOP;
 
 	// used to help convert infix to postfix
-	Stack<string> postfix_stack;
+	Stack<string> pushpop_postfixOP;
 
 	// go through infix item-by-item
 	for (int i = 0; i < infix.size(); i++) {
 		if (infix[i] == "(")
-			postfix_stack.push(infix[i]);
+			pushpop_postfixOP.push(infix[i]);
 		else if (infix[i] == ")") {
 
-			while (postfix_stack.top() != "(") {
-				postfix_queue.push(postfix_stack.top());
-				postfix_stack.pop();
+			while (pushpop_postfixOP.top() != "(") {
+				enqueue_postfixOP.push(pushpop_postfixOP.top());
+				pushpop_postfixOP.pop();
 			}
 
-			postfix_stack.pop();
+			pushpop_postfixOP.pop();
 		}
 		else if (infix[i] == "+" || infix[i] == "-" || infix[i] == "*" || infix[i] == "/" || infix[i] == "%") {
 
 			// if stack is empty
-			if (postfix_stack.is_empty()) {
+			if (pushpop_postfixOP.is_empty()) {
 
-				postfix_stack.push(infix[i]);
+				pushpop_postfixOP.push(infix[i]);
 
 			}
 			else {
 
-				while (!postfix_stack.is_empty() &&
-					get_priority(postfix_stack.top()) >= get_priority(infix[i])) {
+				while (!pushpop_postfixOP.is_empty() &&
+					op_priority(pushpop_postfixOP.top()) >= op_priority(infix[i])) {
 
-					postfix_queue.push(postfix_stack.top());
-					postfix_stack.pop();
+					enqueue_postfixOP.push(pushpop_postfixOP.top());
+					pushpop_postfixOP.pop();
 				}
 
-				postfix_stack.push(infix[i]);
+				pushpop_postfixOP.push(infix[i]);
 			}
 		}
 		else
-			postfix_queue.push(infix[i]);
+			enqueue_postfixOP.push(infix[i]);
 	}
 
-	while (!postfix_stack.is_empty()) {
-		postfix_queue.push(postfix_stack.top());
-		postfix_stack.pop();
+	while (!pushpop_postfixOP.is_empty()) {
+		enqueue_postfixOP.push(pushpop_postfixOP.top());
+		pushpop_postfixOP.pop();
 	}
 
-	Array<Command*> postfix_array(postfix_queue.size());
+	Array<Command*> postfix_array(enqueue_postfixOP.size());
 
 	for (int i = 0; i < postfix_array.size(); i++) {
 
-		string item = postfix_queue.front();
+		string item = enqueue_postfixOP.front();
 		Command * cmd;
 		if (item == "+") {
 			cmd = factory.create_add_command();
@@ -301,7 +298,7 @@ Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factor
 
 		postfix_array[i] = cmd;
 
-		postfix_queue.pop();
+		enqueue_postfixOP.pop();
 	}
 
 	return postfix_array;
@@ -313,7 +310,7 @@ Array<Command*> infix_to_postfix(Array<string> & infix, Stack_Exp_Command_Factor
 *   @return: Integer                 final result value from expression
 *   @exception: Math_Exception          Some math error while evaluating
 */
-int evaluate(Array<Command*> & postfix) {
+int get_val(Array<Command*> & postfix) {
 
 	if (!postfix.size())
 		return 0;
@@ -372,7 +369,7 @@ int main(int argc, char * argv[]) {
 			try {
 
 				// get result
-				int result = evaluate(postfix);
+				int result = get_val(postfix);
 
 				// print result
 				cout << "The result is: " << result << endl;

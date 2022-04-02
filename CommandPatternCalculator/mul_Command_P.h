@@ -32,7 +32,7 @@ public:
 	*   @param: second               second-hand operand
 	*   @return: result              calculated integer
 	*/
-	int evaluate(int, int);
+	int get_val(int, int);
 };
 
 #endif

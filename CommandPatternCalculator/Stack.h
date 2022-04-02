@@ -97,38 +97,6 @@ private:
   int _top;
 };
 
-// size
-template <typename T>
-inline
-uInt Stack <T>::size(void) const {
-
-	// top index + 1 is the number of elements
-	//  in the stack
-	return this->_top + 1;
-}
-
-// top
-template <typename T>
-inline
-T Stack <T>::top(void) const {
-
-	// exception if empty
-	if (this->is_empty())
-		throw Stack <T>::empty_exception();
-
-	// return last element
-	return this->_data->get(this->_top);
-}
-
-// is_empty
-template <typename T>
-inline
-bool Stack <T>::is_empty(void) const 
-{
-	// stack empty when top is -1
-	return this->_top < 0;
-}
-
 #include "Stack.cpp"
 
 #endif   // !defined _STACK_H_

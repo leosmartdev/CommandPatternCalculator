@@ -30,7 +30,7 @@ public:
 	*   @return: result              calculated integer
 	*   @exception: overflow_error      denominator is zero
 	*/
-	int evaluate(int, int);
+	int get_val(int, int);
 };
 
 #endif

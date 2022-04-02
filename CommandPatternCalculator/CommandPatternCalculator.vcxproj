@@ -33,7 +33,7 @@
   <ItemGroup>
     <ClInclude Include="add_Command_P.h" />
     <ClInclude Include="Array.h" />
-    <ClInclude Include="BaseArray.h" />
+    <ClInclude Include="Basic_Array.h" />
     <ClInclude Include="Binary_Op_Command.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="div_Command_P.h" />

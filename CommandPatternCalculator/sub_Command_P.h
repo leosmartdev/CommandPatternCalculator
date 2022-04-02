@@ -28,11 +28,11 @@ public:
 	/**
 	*   Subtracts two integers
 	*
-	*   @param         first                first-hand operand
-	*   @param         second               second-hand operand
-	*   @return             result              calculated integer
+	*   @param: first                first-hand operand
+	*   @param: second               second-hand operand
+	*   @return: result              calculated integer
 	*/
-	int evaluate(int, int);
+	int get_val(int, int);
 };
 
 #endif
